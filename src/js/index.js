@@ -1,2 +1,2 @@
 import './weather_client';
-import '../css/main.css';
+import '../css/styles.css';
