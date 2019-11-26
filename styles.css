@@ -1,0 +1,428 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	border: none;
+  font-family: 'Open Sans';
+  color: #0F0F0F;
+}
+html {
+  font-size: 100%;
+}
+h1 {
+  font-size: 2.5rem;
+  font-weight: 600;
+}
+.wrapper {
+	position: relative;
+}
+@media screen and (min-width: 1800px) {
+  .wrapper {
+      max-width: 1760px;
+      margin: 2vh auto;
+  }
+}
+@media screen and (min-width: 769px) and (max-width: 1799px) {
+  .wrapper {
+      max-width: 90%;
+      margin: 2vh auto;
+  }
+}
+@media screen and (max-width: 768px) {
+  .wrapper {
+      max-width: 95%;
+      margin: 1vh auto;
+  }
+}
+.header {
+  position: relative;
+  width: 100%;
+  height: 47vh;
+	min-height: 240px;
+  background-image: url(img/wroclaw2.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  border-radius: 50px;
+}
+@media screen and (orientation: portrait) {
+  .header {
+      height: 35vh;
+  }
+}
+
+/* ===== Search field ===== */
+
+.search-container {
+  position: absolute;
+  top: 40px;
+  left: 40px;
+  width: 20%;
+  height: 53px;
+}
+@media screen and (max-width: 1270px) {
+  .search-container {
+    width: 35%;
+  }
+}
+@media screen and (max-width: 760px) {
+  .search-container {
+    width: 80%;
+  }
+}
+.search-box {
+  transition: width 0.6s, border-radius 0.6s, box-shadow 0.6s;
+  width: 53px;
+  height: 53px;
+  border-radius: 30px;
+  border: none;
+  cursor: pointer;
+  background-color: rgb(235, 235, 235);
+}
+.search-box.search-icon {
+  color: black
+}
+.search-box:hover {
+    color: white;
+    box-shadow: 0 0 0 5px rgb(61, 71, 82);
+}
+
+.search-box:focus {
+    transition: width 0.6s, border-radius 0.6s;
+    border: none;
+    outline: none;
+    box-shadow: none;
+    padding-left: 15px;
+    cursor: text;
+    width: 90%;
+    border-radius: auto;
+    color: black;
+}
+.search-box:not(:focus) {
+  text-indent: -5000px;  // for no text input on falling back
+}
+#search-submit {
+  position: relative;
+  left: -5000px;
+}
+.search-icon {
+  position: relative;
+  left: -37px;
+  color: #0F0F0F;
+  cursor: pointer;
+}
+
+/* ===== Main city name block ===== */
+
+.city-name {
+  position: absolute;
+  top: 0px;
+  left: 45%;
+}
+.city-name-rel {
+  position: relative;
+  padding: 20px 60px;
+  border-radius: 0 0 30px 30px;
+  text-align: center;
+  background-color: white;
+}
+@media screen and (max-width: 1270px) {
+  .city-name {
+    left: 55%;
+  }
+}
+@media screen and (max-width: 950px) {
+  .city-name {
+    top: auto;
+    left: 50%;
+    bottom: 0px;
+  }
+  .city-name-rel {
+    border-radius: 30px 30px 0 0;
+  }
+  .city-name-rel {
+    left: -50%;
+  }
+}
+.city-name h1 {
+  line-height: 1.2;
+}
+.city-name p {
+  font-size: 1.25rem;
+  line-height: 1.7;
+}
+.bottom-boxes {
+	display: flex;
+}
+
+/* ===== 3 day forecast column ===== */
+
+.three-forecast {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  height: 48vh;
+  margin-left: 40px;
+}
+.title-space {
+	height: 43px;
+	min-height: 3vh;
+}
+.three-forecast h1 {
+  margin: 0 auto 0 20px;
+}
+.three-forecast h1 span, .places-to-see h1 span {
+  font-weight: 300;
+}
+.forecast-box {
+  display: flex;
+	align-items: stretch;
+  width: 340px;
+  height: 100px;
+	min-height: 80px;
+  filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
+  margin-bottom: 20px;
+  background-color: white;
+  border-radius: 30px;
+}
+.forecast-box:last-of-type {
+	margin-bottom: 0;
+}
+.forecast-icon {
+	flex: 1;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.forecast-icon img {
+  width: 40px;
+  height: 40px;
+}
+.forecast-day {
+  flex: 2;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+  text-align: left;
+  font-size: 1rem;
+}
+.forecast-day p span{
+  font-weight: bold;
+}
+.forecast-temp-box p, .bigger-box-temp p, .bigger-box-temp p sup, .pollution-value p {
+  font-family: 'Open Sans Condensed', sans-serif;
+  font-weight: 600;
+}
+.forecast-temp-box {
+  flex: 2;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+  width: 127px;
+  background-color: #DCE0EB;
+  border-radius: 0 30px 30px 0;
+  font-size: 1.563rem;
+  text-align: center;
+}
+
+/* ===== Places to see column ===== */
+
+.places-to-see {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  height: 48vh;
+  margin-left: 80px;
+	margin-right: 80px;
+}
+.pts-wrapper1 {
+	display: flex;
+	height: 340px;
+	min-height: 280px;
+}
+.pts-wrapper2 {
+	display: flex;
+  flex-direction: column;
+}
+.places-to-see-box.box1 {
+	width: 320px;
+	border-radius: 30px;
+	margin-right: 20px;
+}
+.places-to-see-box.box2 {
+	width: 320px;
+	height: 100px;
+	border-radius: 30px;
+	margin-bottom: 20px;
+}
+.places-to-see-box.box3 {
+	width: 320px;
+	height: 220px;
+	border-radius: 30px;
+}
+.places-to-see-box {
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center center;
+	filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
+}
+
+/* ===== Weather-pollution column ===== */
+
+.weather-pollution-column {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+	position: absolute;
+	bottom: 1vh;
+	right: 60px;
+}
+.bigger-box {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: stretch;
+	width: 500px;
+	height: 200px;
+	min-height: 180px;
+	filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
+	margin-bottom: 20px;
+	background-color: white;
+	border-radius: 30px;
+}
+.bigger-icon {
+	flex: 1 1 28%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background-color: #DCE0EB;
+	border-radius: 30px 0 30px 0;
+}
+.bigger-icon img {
+  width: 68px;
+  height: 68px;
+}
+.bigger-box-temp {
+  flex: 1 1 28%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 3.125rem;
+}
+.bigger-box-temp p sup {
+	font-size: 1.75rem;
+}
+.bigger-box-city {
+	flex: 1 1 44%;
+	display: flex;
+	align-items: center;
+	justify-content: flex-start;
+	position: relative;
+	font-size: 1.25rem;
+	padding-left: 10px;
+}
+.bigger-box-city p::before {
+  content: "";
+  position: absolute;
+  left: -10px;
+  width: 1px;
+  height: 45%;
+  background-color: #707070;
+}
+.bigger-box-city p span, .bigger-box-pollution p span{
+  font-weight: bold;
+}
+.bigger-box-lower-row {
+	flex: 1 1 33.3%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.middle {
+	position: relative;
+}
+.bigger-box-lower-row.middle p::before, .bigger-box-pollution-lower.row2 p::before{
+  content: "";
+	position: absolute;
+	width: 1px;
+	height: 30%;
+	left: 10px;
+	background-color: #707070;
+}
+.bigger-box-lower-row.middle p::after {
+  content: "";
+	position: absolute;
+	width: 1px;
+	height: 30%;
+	right: 10px;
+	background-color: #707070;
+}
+.pollution-value {
+	flex: 1 1 28%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background-color: #5E5E5E;
+	border-radius: 30px 0 30px 0;
+}
+.pollution-value p {
+	font-size: 3.125rem;
+	color: white;
+}
+.bigger-box-pollution {
+	flex: 1 1 72%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 1.25rem;
+}
+.bigger-box-pollution p sub {
+	font-size: 0.75rem;
+	vertical-align: text-bottom;
+}
+.bigger-box-pollution-lower {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.bigger-box-pollution-lower.row1 {
+	flex: 1 1 39%;
+}
+.bigger-box-pollution-lower.row2 {
+	flex: 1 1 61%;
+}
+.smaller-box {
+  display: flex;
+	align-items: stretch;
+  width: 500px;
+  height: 80px;
+	min-height: 80px;
+  filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
+  margin-bottom: 20px;
+  background-color: white;
+  border-radius: 30px;
+}
+.smaller-box:last-of-type, .bigger-box:last-of-type {
+	margin-bottom: 0;
+}
+.smaller-icon {
+	flex: 1;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background-color: #DCE0EB;
+	border-radius: 30px 0 0 30px;
+}
+.smaller-icon img {
+  width: 40px;
+  height: 40px;
+}
+.smaller-box-text {
+  flex: 2.5;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 1.25rem;
+}
+.smaller-box-text p span{
+  font-weight: bold;
+}

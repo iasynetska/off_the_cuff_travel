@@ -1,0 +1,194 @@
+<!DOCTYPE HTML>
+
+<html lang="en" style="scroll-behavior: smooth;">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Everything you need to know before stepping out the door.">
+  <meta name="keywords" content="travel, weather, air quality, air pollution, currency">
+  <title>off the cuff travel</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:700&display=swap&subset=latin-ext" rel="stylesheet">
+</head>
+
+<body>
+<div class='wrapper'>
+  <div class='header'>
+    <div class='search-container'>
+      <input id="search-box" type="text" class="search-box"/>
+        <label for="search-box"><span class="fa fa-search search-icon"></span></label>
+      <input type="submit" id="search-submit" />
+    </div>
+    <div class='city-name'>
+      <div class='city-name-rel'>
+        <h1>Wrocław</h1>
+        <p>Poland</p>
+      </div>
+    </div>
+  </div>
+
+  <div class='bottom-boxes'>
+    <!-- ===== 3 day forecast column ===== -->
+    <div class='three-forecast'>
+
+      <div class='title-space'></div>
+      <h1>3 Day <span>Forecast</span></h1>
+      <div class='title-space'></div>
+
+      <!-- ===== 3 day forecast - box 1 ===== -->
+      <div class='forecast-box'>
+        <div class='forecast-icon'>
+          <div>
+            <img src='img/sun.svg' />
+          </div>
+        </div>
+        <div class='forecast-day'>
+            <p><span>Monday</span><br />
+            Sunny</p>
+        </div>
+        <div class='forecast-temp-box'>
+            <p>14&deg; / 6&deg;</p>
+        </div>
+      </div>
+
+      <!-- ===== 3 day forecast - box 2 ===== -->
+      <div class='forecast-box'>
+        <div class='forecast-icon'>
+          <div>
+            <img src='img/sun.svg' />
+          </div>
+        </div>
+        <div class='forecast-day'>
+            <p><span>Monday</span><br />
+            Sunny</p>
+        </div>
+        <div class='forecast-temp-box'>
+            <p>14&deg; / 6&deg;</p>
+        </div>
+      </div>
+
+      <!-- ===== 3 day forecast - box 3 ===== -->
+      <div class='forecast-box'>
+        <div class='forecast-icon'>
+          <div>
+            <img src='img/sun.svg' />
+          </div>
+        </div>
+        <div class='forecast-day'>
+            <p><span>Monday</span><br />
+            Sunny</p>
+        </div>
+        <div class='forecast-temp-box'>
+            <p>14&deg; / 6&deg;</p>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- ===== Places to see column ===== -->
+    <div class='places-to-see'>
+
+      <div class='title-space'></div>
+      <h1>Places <span>To See</span></h1>
+      <div class='title-space'></div>
+
+      <div class='pts-wrapper1'>
+        <!-- ===== Places to see - box 1 ===== -->
+        <div class='places-to-see-box box1' style='background-image: url("img/muzeum1.jpg");'></div>
+
+        <div class='pts-wrapper2'>
+          <div class='places-to-see-box box2' style='background-image: url("img/muzeum1.jpg");'></div>
+          <div class='places-to-see-box box3' style='background-image: url("img/muzeum1.jpg");'></div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- ===== Weather-pollution column ===== -->
+    <div class='weather-pollution-column'>
+
+      <!-- ===== Current weather box ===== -->
+      <div class='bigger-box'>
+        <div class='bigger-icon'>
+          <div>
+            <img src='img/sun.svg' />
+          </div>
+        </div>
+        <div class='bigger-box-temp'>
+            <p>14&deg;<sup>C</sup></p>
+        </div>
+        <div class='bigger-box-city'>
+            <p><span>Wrocław</span><br/>
+            Poland</p>
+        </div>
+          <div class='bigger-box-lower-row'>
+            <p>Humidity: 15&percnt;</p>
+          </div>
+          <div class='bigger-box-lower-row middle'>
+            <p>East</p>
+          </div>
+          <div class='bigger-box-lower-row'>
+            <p>12km/h</p>
+          </div>
+      </div>
+
+      <!-- ===== Pollution box ===== -->
+      <div class='bigger-box'>
+        <div class='pollution-value'>
+          <div>
+            <p>158</p>
+          </div>
+        </div>
+        <div class='bigger-box-pollution'>
+            <p><span>Unhealthy</span><br/>
+            Current Air Quality Index<br/>
+            <sub>Based on US EPA standard</sub></p>
+        </div>
+          <div class='bigger-box-pollution-lower row1'>
+            <p>Pollution: 20 μg/m<sup>3</sup></p>
+          </div>
+          <div class='bigger-box-pollution-lower row2 middle'>
+            <p>Atmospheric Pressure: 976 hPa</p>
+          </div>
+      </div>
+
+      <!-- ===== Currency box ===== -->
+      <div class='smaller-box'>
+        <div class='smaller-icon'>
+          <div>
+            <img src='img/money.svg' />
+          </div>
+        </div>
+        <div class='smaller-box-text'>
+            <p>Currency: <span>Złoty (PLN)</span></p>
+        </div>
+      </div>
+
+      <!-- ===== Drinking age box ===== -->
+      <div class='smaller-box'>
+        <div class='smaller-icon'>
+          <div>
+            <img src='img/alcohol.svg' />
+          </div>
+        </div>
+        <div class='smaller-box-text'>
+            <p>Drinking Age: <span>18</span></p>
+        </div>
+      </div>
+
+    </div>
+
+
+  </div>
+</div>
+
+<script>
+  document.addEventListener("touchstart", function(){}, true);
+</script>
+
+</body>
+</html>
