@@ -99,7 +99,7 @@ h1 {
     color: black;
 }
 .search-box:not(:focus) {
-  text-indent: -5000px;  // for no text input on falling back
+  text-indent: -5000px;  /* for no text input on falling back */
 }
 #search-submit {
   position: relative;
