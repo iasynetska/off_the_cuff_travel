@@ -1,31 +1,16 @@
-// SEARCH FUNCTIONALITY
-
-let appId = 'ace7f80e9d662f6d6fbf5503dcf9bdf6';
+const appId = 'ace7f80e9d662f6d6fbf5503dcf9bdf6';
 let units = 'metric';
 let searchMethod = 'q';
 
-document.querySelector('.search-icon').addEventListener('click', () => {
-    let searchTerm = document.getElementById('search-box').value;
-    if(searchTerm)
-    forecastWeather(searchTerm);
-})
-
-// CURRENT WEATHER & FORECAST API FETCH
-
-function forecastWeather(searchTerm) {
-    fetch(`http://api.openweathermap.org/data/2.5/forecast?${searchMethod}=${searchTerm}&APPID=${appId}&units=${units}`)
+async function forecastWeather(cityName) {
+    return await fetch(`http://api.openweathermap.org/data/2.5/forecast?${searchMethod}=${cityName}&APPID=${appId}&units=${units}`)
     .then(response => response.json())
-    .then(response => init(response))
 }
 
-// WEATHER DATA SUBSTITUTION
-
-function init(resultFromServer) {
+async function setWeather(resultFromServer) {
     console.log(resultFromServer);
 
     document.querySelector('.city-name-rel h1').innerText = resultFromServer.city.name;
-
-    // CURRENT WEATHER
 
     let currentWeatherIcon = document.querySelector('.bigger-icon img');
     let finalIcon = resultFromServer.list[0].weather[0].icon;
@@ -35,8 +20,6 @@ function init(resultFromServer) {
     document.getElementById('city-country').innerText = resultFromServer.city.name;
     document.getElementById('humidity').innerText = resultFromServer.list[0].main.humidity;
     document.getElementById('wind-speed').innerText = Math.floor(resultFromServer.list[0].wind.speed);
-
-    // FORECAST
 
     let weatherIconOne = resultFromServer.list[6].weather[0].icon;
     let weatherIconTwo = resultFromServer.list[14].weather[0].icon;
@@ -58,3 +41,6 @@ function init(resultFromServer) {
     document.getElementById('degrees-day3').innerText = Math.floor(resultFromServer.list[22].main.temp);
 
 }
+
+module.exports.forecastWeather = forecastWeather;
+module.exports.setWeather = setWeather;
