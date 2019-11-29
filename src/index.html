@@ -17,7 +17,8 @@
 <div class='wrapper'>
   <div class='header'>
     <div class='search-container'>
-      <input id="search-box" type="text" class="search-box"/>
+      <input id="search-box" type="text" class="search-box" list="cityList" name="cityList"/>
+      <datalist id="cityList"></datalist>
         <label for="search-box"><span class="fa fa-search search-icon"></span></label>
       <input type="submit" id="search-submit" />
     </div>
@@ -139,19 +140,16 @@
       <div class='bigger-box'>
         <div class='pollution-value'>
           <div>
-            <p>158</p>
+            <p id="air-pollution">158</p>
           </div>
         </div>
         <div class='bigger-box-pollution'>
-            <p><span>Unhealthy</span><br/>
+            <p><span id="harmfulness">Unhealthy</span><br/>
             Current Air Quality Index<br/>
             <sub>Based on US EPA standard</sub></p>
         </div>
-          <div class='bigger-box-pollution-lower row1'>
-            <p>Pollution: 20 μg/m<sup>3</sup></p>
-          </div>
           <div class='bigger-box-pollution-lower row2 middle'>
-            <p>Atmospheric Pressure: 976 hPa</p>
+            <p>Atmospheric Pressure: <span id="atm-pressure">976</span> hPa</p>
           </div>
       </div>
 

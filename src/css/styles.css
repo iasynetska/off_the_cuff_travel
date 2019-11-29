@@ -39,7 +39,7 @@ h1 {
   width: 100%;
   height: 47vh;
 	min-height: 240px;
-  background-image: url(../img/wroclaw2.jpg);
+  background-image: url(/assets/img/wroclaw2.jpg);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center center;
@@ -100,6 +100,9 @@ h1 {
 }
 .search-box:not(:focus) {
   text-indent: -5000px;  /* for no text input on falling back */
+}
+#search-box::-webkit-calendar-picker-indicator {
+  display: none;
 }
 #search-submit {
   position: relative;
@@ -340,14 +343,14 @@ h1 {
 .middle {
 	position: relative;
 }
-.bigger-box-lower-row.middle p::before, .bigger-box-pollution-lower.row2 p::before{
+/*.bigger-box-lower-row.middle p::before, .bigger-box-pollution-lower.row2 p::before{
   content: "";
 	position: absolute;
 	width: 1px;
 	height: 30%;
 	left: 10px;
 	background-color: #707070;
-}
+}*/
 .bigger-box-lower-row.middle p::after {
   content: "";
 	position: absolute;
