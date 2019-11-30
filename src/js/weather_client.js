@@ -47,24 +47,32 @@ async function setWeather(resultFromServer) {
 
     document.getElementById('wind-speed').innerText = Math.floor(resultFromServer.list[0].wind.speed);
 
-    let weatherIconOne = resultFromServer.list[6].weather[0].icon;
-    let weatherIconTwo = resultFromServer.list[14].weather[0].icon;
-    let weatherIconThree = resultFromServer.list[22].weather[0].icon;
+    // let dayOne = resultFromServer.list[6].dt;
+    // let dayTwo = resultFromServer.list[14].dt;
+    // let dayThree = resultFromServer.list[22].dt;
+
+    // document.getElementById('weekday1').innerHTML = getDayOfWeek(dayOne);
+    // document.getElementById('weekday2').innerHTML = getDayOfWeek(dayTwo);
+    // document.getElementById('weekday3').innerHTML = getDayOfWeek(dayThree);
+
+    let weatherIconOne = resultFromServer.list[8].weather[0].icon;
+    let weatherIconTwo = resultFromServer.list[16].weather[0].icon;
+    let weatherIconThree = resultFromServer.list[24].weather[0].icon;
 
     document.getElementById('icon-day1').src = 'http://openweathermap.org/img/wn/' + weatherIconOne + '@2x.png';
     document.getElementById('icon-day2').src = 'http://openweathermap.org/img/wn/' + weatherIconTwo + '@2x.png';
     document.getElementById('icon-day3').src = 'http://openweathermap.org/img/wn/' + weatherIconThree + '@2x.png';
 
-    let descDayOne = resultFromServer.list[6].weather[0].description
+    let descDayOne = resultFromServer.list[8].weather[0].description
     document.getElementById('weather-day1').innerText = descDayOne.charAt(0).toUpperCase() + descDayOne.slice(1);
-    let descDayTwo = resultFromServer.list[14].weather[0].description
+    let descDayTwo = resultFromServer.list[16].weather[0].description
     document.getElementById('weather-day2').innerText = descDayTwo.charAt(0).toUpperCase() + descDayTwo.slice(1);
-    let descDayThree = resultFromServer.list[22].weather[0].description
+    let descDayThree = resultFromServer.list[24].weather[0].description
     document.getElementById('weather-day3').innerText = descDayThree.charAt(0).toUpperCase() + descDayThree.slice(1);
 
-    document.getElementById('degrees-day1').innerText = Math.floor(resultFromServer.list[6].main.temp);
-    document.getElementById('degrees-day2').innerText = Math.floor(resultFromServer.list[14].main.temp);
-    document.getElementById('degrees-day3').innerText = Math.floor(resultFromServer.list[22].main.temp);
+    document.getElementById('degrees-day1').innerText = Math.floor(resultFromServer.list[8].main.temp);
+    document.getElementById('degrees-day2').innerText = Math.floor(resultFromServer.list[16].main.temp);
+    document.getElementById('degrees-day3').innerText = Math.floor(resultFromServer.list[24].main.temp);
 
 }
 
@@ -321,6 +329,11 @@ function getCountryName (countryCodeX) {
         return isoCountries[countryCodeX]
     }
 }
+
+function getDayOfWeek(date) {
+    var dayOfWeek = new Date(date).getDay();    
+    return isNaN(dayOfWeek) ? null : ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'][dayOfWeek];
+  }
 
 module.exports.forecastWeather = forecastWeather;
 module.exports.setWeather = setWeather;
