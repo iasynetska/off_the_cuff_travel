@@ -11,8 +11,9 @@ async function setWeather(resultFromServer) {
     console.log(resultFromServer);
 
     let currentWeatherIcon = document.querySelector('.bigger-icon img');
-    let finalIcon = resultFromServer.list[0].weather[0].icon;
-    currentWeatherIcon.src = 'http://openweathermap.org/img/wn/' + finalIcon + '@2x.png';
+    let apiIcon = resultFromServer.list[0].weather[0].icon;    
+    currentWeatherIcon.src = decideIcon(apiIcon);
+    
 
     document.getElementById('degrees').innerText = Math.floor(resultFromServer.list[0].main.temp);
     
@@ -52,17 +53,21 @@ async function setWeather(resultFromServer) {
         weekday[5] = "Friday";
         weekday[6] = "Saturday";
     
-    document.getElementById('weekday1').innerText = weekday[dayOne];
-    document.getElementById('weekday2').innerText = weekday[dayTwo];
-    document.getElementById('weekday3').innerText = weekday[dayThree];
+    let hourOne = new Date(resultFromServer.list[8].dt * 1000).getHours();
+    let hourTwo = new Date(resultFromServer.list[16].dt * 1000).getHours();
+    let hourThree = new Date(resultFromServer.list[24].dt * 1000).getHours();
+    
+    document.getElementById('weekday1').innerText = weekday[dayOne] + ' at ' + hourOne + '.00';
+    document.getElementById('weekday2').innerText = weekday[dayTwo] + ' at ' + hourTwo + '.00';
+    document.getElementById('weekday3').innerText = weekday[dayThree] + ' at ' + hourThree + '.00';
 
     let weatherIconOne = resultFromServer.list[8].weather[0].icon;
     let weatherIconTwo = resultFromServer.list[16].weather[0].icon;
     let weatherIconThree = resultFromServer.list[24].weather[0].icon;
 
-    document.getElementById('icon-day1').src = 'http://openweathermap.org/img/wn/' + weatherIconOne + '@2x.png';
-    document.getElementById('icon-day2').src = 'http://openweathermap.org/img/wn/' + weatherIconTwo + '@2x.png';
-    document.getElementById('icon-day3').src = 'http://openweathermap.org/img/wn/' + weatherIconThree + '@2x.png';
+    document.getElementById('icon-day1').src = decideIcon(weatherIconOne);
+    document.getElementById('icon-day2').src = decideIcon(weatherIconTwo);
+    document.getElementById('icon-day3').src = decideIcon(weatherIconThree);
 
     let descDayOne = resultFromServer.list[8].weather[0].description
     document.getElementById('weather-day1').innerText = descDayOne.charAt(0).toUpperCase() + descDayOne.slice(1);
@@ -77,264 +82,22 @@ async function setWeather(resultFromServer) {
 
 }
 
-// var isoCountries = {
-//     'AF' : 'Afghanistan',
-//     'AX' : 'Aland Islands',
-//     'AL' : 'Albania',
-//     'DZ' : 'Algeria',
-//     'AS' : 'American Samoa',
-//     'AD' : 'Andorra',
-//     'AO' : 'Angola',
-//     'AI' : 'Anguilla',
-//     'AQ' : 'Antarctica',
-//     'AG' : 'Antigua And Barbuda',
-//     'AR' : 'Argentina',
-//     'AM' : 'Armenia',
-//     'AW' : 'Aruba',
-//     'AU' : 'Australia',
-//     'AT' : 'Austria',
-//     'AZ' : 'Azerbaijan',
-//     'BS' : 'Bahamas',
-//     'BH' : 'Bahrain',
-//     'BD' : 'Bangladesh',
-//     'BB' : 'Barbados',
-//     'BY' : 'Belarus',
-//     'BE' : 'Belgium',
-//     'BZ' : 'Belize',
-//     'BJ' : 'Benin',
-//     'BM' : 'Bermuda',
-//     'BT' : 'Bhutan',
-//     'BO' : 'Bolivia',
-//     'BA' : 'Bosnia And Herzegovina',
-//     'BW' : 'Botswana',
-//     'BV' : 'Bouvet Island',
-//     'BR' : 'Brazil',
-//     'IO' : 'British Indian Ocean Territory',
-//     'BN' : 'Brunei Darussalam',
-//     'BG' : 'Bulgaria',
-//     'BF' : 'Burkina Faso',
-//     'BI' : 'Burundi',
-//     'KH' : 'Cambodia',
-//     'CM' : 'Cameroon',
-//     'CA' : 'Canada',
-//     'CV' : 'Cape Verde',
-//     'KY' : 'Cayman Islands',
-//     'CF' : 'Central African Republic',
-//     'TD' : 'Chad',
-//     'CL' : 'Chile',
-//     'CN' : 'China',
-//     'CX' : 'Christmas Island',
-//     'CC' : 'Cocos (Keeling) Islands',
-//     'CO' : 'Colombia',
-//     'KM' : 'Comoros',
-//     'CG' : 'Congo',
-//     'CD' : 'Congo, Democratic Republic',
-//     'CK' : 'Cook Islands',
-//     'CR' : 'Costa Rica',
-//     'CI' : 'Cote D\'Ivoire',
-//     'HR' : 'Croatia',
-//     'CU' : 'Cuba',
-//     'CY' : 'Cyprus',
-//     'CZ' : 'Czech Republic',
-//     'DK' : 'Denmark',
-//     'DJ' : 'Djibouti',
-//     'DM' : 'Dominica',
-//     'DO' : 'Dominican Republic',
-//     'EC' : 'Ecuador',
-//     'EG' : 'Egypt',
-//     'SV' : 'El Salvador',
-//     'GQ' : 'Equatorial Guinea',
-//     'ER' : 'Eritrea',
-//     'EE' : 'Estonia',
-//     'ET' : 'Ethiopia',
-//     'FK' : 'Falkland Islands (Malvinas)',
-//     'FO' : 'Faroe Islands',
-//     'FJ' : 'Fiji',
-//     'FI' : 'Finland',
-//     'FR' : 'France',
-//     'GF' : 'French Guiana',
-//     'PF' : 'French Polynesia',
-//     'TF' : 'French Southern Territories',
-//     'GA' : 'Gabon',
-//     'GM' : 'Gambia',
-//     'GE' : 'Georgia',
-//     'DE' : 'Germany',
-//     'GH' : 'Ghana',
-//     'GI' : 'Gibraltar',
-//     'GR' : 'Greece',
-//     'GL' : 'Greenland',
-//     'GD' : 'Grenada',
-//     'GP' : 'Guadeloupe',
-//     'GU' : 'Guam',
-//     'GT' : 'Guatemala',
-//     'GG' : 'Guernsey',
-//     'GN' : 'Guinea',
-//     'GW' : 'Guinea-Bissau',
-//     'GY' : 'Guyana',
-//     'HT' : 'Haiti',
-//     'HM' : 'Heard Island & Mcdonald Islands',
-//     'VA' : 'Holy See (Vatican City State)',
-//     'HN' : 'Honduras',
-//     'HK' : 'Hong Kong',
-//     'HU' : 'Hungary',
-//     'IS' : 'Iceland',
-//     'IN' : 'India',
-//     'ID' : 'Indonesia',
-//     'IR' : 'Iran, Islamic Republic Of',
-//     'IQ' : 'Iraq',
-//     'IE' : 'Ireland',
-//     'IM' : 'Isle Of Man',
-//     'IL' : 'Israel',
-//     'IT' : 'Italy',
-//     'JM' : 'Jamaica',
-//     'JP' : 'Japan',
-//     'JE' : 'Jersey',
-//     'JO' : 'Jordan',
-//     'KZ' : 'Kazakhstan',
-//     'KE' : 'Kenya',
-//     'KI' : 'Kiribati',
-//     'KR' : 'Korea',
-//     'KW' : 'Kuwait',
-//     'KG' : 'Kyrgyzstan',
-//     'LA' : 'Lao People\'s Democratic Republic',
-//     'LV' : 'Latvia',
-//     'LB' : 'Lebanon',
-//     'LS' : 'Lesotho',
-//     'LR' : 'Liberia',
-//     'LY' : 'Libyan Arab Jamahiriya',
-//     'LI' : 'Liechtenstein',
-//     'LT' : 'Lithuania',
-//     'LU' : 'Luxembourg',
-//     'MO' : 'Macao',
-//     'MK' : 'Macedonia',
-//     'MG' : 'Madagascar',
-//     'MW' : 'Malawi',
-//     'MY' : 'Malaysia',
-//     'MV' : 'Maldives',
-//     'ML' : 'Mali',
-//     'MT' : 'Malta',
-//     'MH' : 'Marshall Islands',
-//     'MQ' : 'Martinique',
-//     'MR' : 'Mauritania',
-//     'MU' : 'Mauritius',
-//     'YT' : 'Mayotte',
-//     'MX' : 'Mexico',
-//     'FM' : 'Micronesia, Federated States Of',
-//     'MD' : 'Moldova',
-//     'MC' : 'Monaco',
-//     'MN' : 'Mongolia',
-//     'ME' : 'Montenegro',
-//     'MS' : 'Montserrat',
-//     'MA' : 'Morocco',
-//     'MZ' : 'Mozambique',
-//     'MM' : 'Myanmar',
-//     'NA' : 'Namibia',
-//     'NR' : 'Nauru',
-//     'NP' : 'Nepal',
-//     'NL' : 'Netherlands',
-//     'AN' : 'Netherlands Antilles',
-//     'NC' : 'New Caledonia',
-//     'NZ' : 'New Zealand',
-//     'NI' : 'Nicaragua',
-//     'NE' : 'Niger',
-//     'NG' : 'Nigeria',
-//     'NU' : 'Niue',
-//     'NF' : 'Norfolk Island',
-//     'MP' : 'Northern Mariana Islands',
-//     'NO' : 'Norway',
-//     'OM' : 'Oman',
-//     'PK' : 'Pakistan',
-//     'PW' : 'Palau',
-//     'PS' : 'Palestinian Territory, Occupied',
-//     'PA' : 'Panama',
-//     'PG' : 'Papua New Guinea',
-//     'PY' : 'Paraguay',
-//     'PE' : 'Peru',
-//     'PH' : 'Philippines',
-//     'PN' : 'Pitcairn',
-//     'PL' : 'Poland',
-//     'PT' : 'Portugal',
-//     'PR' : 'Puerto Rico',
-//     'QA' : 'Qatar',
-//     'RE' : 'Reunion',
-//     'RO' : 'Romania',
-//     'RU' : 'Russian Federation',
-//     'RW' : 'Rwanda',
-//     'BL' : 'Saint Barthelemy',
-//     'SH' : 'Saint Helena',
-//     'KN' : 'Saint Kitts And Nevis',
-//     'LC' : 'Saint Lucia',
-//     'MF' : 'Saint Martin',
-//     'PM' : 'Saint Pierre And Miquelon',
-//     'VC' : 'Saint Vincent And Grenadines',
-//     'WS' : 'Samoa',
-//     'SM' : 'San Marino',
-//     'ST' : 'Sao Tome And Principe',
-//     'SA' : 'Saudi Arabia',
-//     'SN' : 'Senegal',
-//     'RS' : 'Serbia',
-//     'SC' : 'Seychelles',
-//     'SL' : 'Sierra Leone',
-//     'SG' : 'Singapore',
-//     'SK' : 'Slovakia',
-//     'SI' : 'Slovenia',
-//     'SB' : 'Solomon Islands',
-//     'SO' : 'Somalia',
-//     'ZA' : 'South Africa',
-//     'GS' : 'South Georgia And Sandwich Isl.',
-//     'ES' : 'Spain',
-//     'LK' : 'Sri Lanka',
-//     'SD' : 'Sudan',
-//     'SR' : 'Suriname',
-//     'SJ' : 'Svalbard And Jan Mayen',
-//     'SZ' : 'Swaziland',
-//     'SE' : 'Sweden',
-//     'CH' : 'Switzerland',
-//     'SY' : 'Syrian Arab Republic',
-//     'TW' : 'Taiwan',
-//     'TJ' : 'Tajikistan',
-//     'TZ' : 'Tanzania',
-//     'TH' : 'Thailand',
-//     'TL' : 'Timor-Leste',
-//     'TG' : 'Togo',
-//     'TK' : 'Tokelau',
-//     'TO' : 'Tonga',
-//     'TT' : 'Trinidad And Tobago',
-//     'TN' : 'Tunisia',
-//     'TR' : 'Turkey',
-//     'TM' : 'Turkmenistan',
-//     'TC' : 'Turks And Caicos Islands',
-//     'TV' : 'Tuvalu',
-//     'UG' : 'Uganda',
-//     'UA' : 'Ukraine',
-//     'AE' : 'United Arab Emirates',
-//     'GB' : 'United Kingdom',
-//     'US' : 'United States',
-//     'UM' : 'United States Outlying Islands',
-//     'UY' : 'Uruguay',
-//     'UZ' : 'Uzbekistan',
-//     'VU' : 'Vanuatu',
-//     'VE' : 'Venezuela',
-//     'VN' : 'Viet Nam',
-//     'VG' : 'Virgin Islands, British',
-//     'VI' : 'Virgin Islands, U.S.',
-//     'WF' : 'Wallis And Futuna',
-//     'EH' : 'Western Sahara',
-//     'YE' : 'Yemen',
-//     'ZM' : 'Zambia',
-//     'ZW' : 'Zimbabwe'
-// };
+function decideIcon(icon) {
+    if(icon === '01d') {return '/assets/img/sun.svg';
+        } else if(icon === '01n') {return '/assets/img/moon.svg';
+        } else if(icon === '02d') {return '/assets/img/cloud-sun.svg';
+        } else if(icon === '02n') {return '/assets/img/cloud-moon.svg';
+        } else if(icon === '03d' || icon === '03n') {return '/assets/img/cloud.svg';
+        } else if(icon === '04d' || icon === '04n') {return '/assets/img/cloud.svg';
+        } else if(icon === '09d' || icon === '09n') {return '/assets/img/rain-alt.svg';
+        } else if(icon === '10d') {return '/assets/img/rain-sun.svg';
+        } else if(icon === '10n') {return '/assets/img/rain-moon.svg';
+        } else if(icon === '11d' || icon === '11n') {return '/assets/img/lightning-rain.svg';
+        } else if(icon === '13d' || icon === '13n') {return '/assets/img/snow-alt.svg';
+        } else if(icon === '50d' || icon === '50n') {return '/assets/img/fog.svg';
+        };
+    }
 
-// function getCountryName (countryCodeX) {
-//     if (isoCountries.hasOwnProperty(countryCodeX)) {
-//         return isoCountries[countryCodeX]
-//     }
-// }
-
-// function getDayOfWeek(date) {
-//     var dayOfWeek = new Date(date).getDay();    
-//     return isNaN(dayOfWeek) ? null : ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'][dayOfWeek];
-//     }
 
 module.exports.forecastWeather = forecastWeather;
 module.exports.setWeather = setWeather;
