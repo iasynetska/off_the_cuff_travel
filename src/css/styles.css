@@ -235,6 +235,7 @@ h1 {
   flex-direction: column;
   flex-wrap: nowrap;
   height: 48vh;
+	width: 36vw;
   margin-left: 80px;
 	margin-right: 80px;
 }
@@ -243,31 +244,72 @@ h1 {
 	height: 340px;
 	min-height: 280px;
 }
+.pts-wrapper1 a.change-wrapper {
+	display: flex;
+	min-height: 280px;
+	width: 100%;
+}
 .pts-wrapper2 {
 	display: flex;
   flex-direction: column;
+	/* max-height: 340px;
+	min-height: 280px; */
+	width: 100%;
+}
+.pts-wrapper2 a.change-wrapper2 {
+	display: flex;
+	flex: 1 1 auto;
+}
+.pts-wrapper2 a.change-wrapper3 {
+	display: flex;
+	flex: 2 2 auto;
 }
 .places-to-see-box.box1 {
-	width: 320px;
+	/* width: 320px; */
+	/* max-height: 340px; */
 	border-radius: 30px;
 	margin-right: 20px;
+	width: 100%;
+	flex: 1 1 auto;
 }
 .places-to-see-box.box2 {
-	width: 320px;
-	height: 100px;
+	/* width: 320px; */
 	border-radius: 30px;
 	margin-bottom: 20px;
+	flex: 1 1 auto;
 }
 .places-to-see-box.box3 {
-	width: 320px;
-	height: 220px;
+	/* width: 320px; */
+	/* max-height: 220px; */
 	border-radius: 30px;
+	flex: 2 2 auto;
 }
 .places-to-see-box {
 	background-repeat: no-repeat;
 	background-size: cover;
 	background-position: center center;
 	filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
+}
+figure {
+	width: 100%;
+	position: relative;
+	display: flex;
+	flex: 1 1 auto;
+}
+figcaption {
+	position: absolute;
+	top: 15px;
+	left: 20px;
+  max-width: 70%;
+	color: white;
+}
+figcaption::before {
+  content: "\f041";
+  font-family: "FontAwesome";
+  color: white;
+  padding-right: 15px;
+  font-size: 1.125rem;
+	text-shadow: none;
 }
 
 /* ===== Weather-pollution column ===== */

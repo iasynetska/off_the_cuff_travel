@@ -8,15 +8,15 @@ async function forecastWeather(lat, lng) {
 }
 
 async function setWeather(resultFromServer) {
-    console.log(resultFromServer);
+    //console.log(resultFromServer);
 
     let currentWeatherIcon = document.querySelector('.bigger-icon img');
-    let apiIcon = resultFromServer.list[0].weather[0].icon;    
+    let apiIcon = resultFromServer.list[0].weather[0].icon;
     currentWeatherIcon.src = decideIcon(apiIcon);
-    
+
 
     document.getElementById('degrees').innerText = Math.floor(resultFromServer.list[0].main.temp);
-    
+
     document.getElementById('humidity').innerText = resultFromServer.list[0].main.humidity;
 
     let windDegree = resultFromServer.list[0].wind.deg;
@@ -52,11 +52,11 @@ async function setWeather(resultFromServer) {
         weekday[4] = "Thursday";
         weekday[5] = "Friday";
         weekday[6] = "Saturday";
-    
+
     let hourOne = new Date(resultFromServer.list[8].dt * 1000).getHours();
     let hourTwo = new Date(resultFromServer.list[16].dt * 1000).getHours();
     let hourThree = new Date(resultFromServer.list[24].dt * 1000).getHours();
-    
+
     document.getElementById('weekday1').innerText = weekday[dayOne] + ' at ' + hourOne + '.00';
     document.getElementById('weekday2').innerText = weekday[dayTwo] + ' at ' + hourTwo + '.00';
     document.getElementById('weekday3').innerText = weekday[dayThree] + ' at ' + hourThree + '.00';
