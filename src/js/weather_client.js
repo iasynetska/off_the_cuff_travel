@@ -10,20 +10,12 @@ async function forecastWeather(lat, lng) {
 async function setWeather(resultFromServer) {
     console.log(resultFromServer);
 
-    // document.querySelector('.city-name-rel h1').innerText = resultFromServer.city.name;
-    // let countryCode = resultFromServer.city.country;
-    // getCountryName(countryCode);
-    // document.querySelector('.city-name-rel p').innerText = isoCountries[countryCode];
-
     let currentWeatherIcon = document.querySelector('.bigger-icon img');
     let finalIcon = resultFromServer.list[0].weather[0].icon;
     currentWeatherIcon.src = 'http://openweathermap.org/img/wn/' + finalIcon + '@2x.png';
 
     document.getElementById('degrees').innerText = Math.floor(resultFromServer.list[0].main.temp);
     
-    // document.getElementById('city-country').innerText = resultFromServer.city.name;
-    // document.getElementById('country').innerText = isoCountries[countryCode];
-
     document.getElementById('humidity').innerText = resultFromServer.list[0].main.humidity;
 
     let windDegree = resultFromServer.list[0].wind.deg;
@@ -43,17 +35,26 @@ async function setWeather(resultFromServer) {
         } else if(windDegree>=292.5 && windDegree<337.5) {
 			windDirection = 'North West';
         } else {windDirection = 'North'}
-        document.getElementById('wind-direction').innerHTML = windDirection;
+        document.getElementById('wind-direction').innerText = windDirection;
 
     document.getElementById('wind-speed').innerText = Math.floor(resultFromServer.list[0].wind.speed);
 
-    // let dayOne = resultFromServer.list[6].dt;
-    // let dayTwo = resultFromServer.list[14].dt;
-    // let dayThree = resultFromServer.list[22].dt;
+    let dayOne = new Date(resultFromServer.list[8].dt * 1000).getDay();
+    let dayTwo = new Date(resultFromServer.list[16].dt * 1000).getDay();
+    let dayThree = new Date(resultFromServer.list[24].dt * 1000).getDay();
 
-    // document.getElementById('weekday1').innerHTML = getDayOfWeek(dayOne);
-    // document.getElementById('weekday2').innerHTML = getDayOfWeek(dayTwo);
-    // document.getElementById('weekday3').innerHTML = getDayOfWeek(dayThree);
+    const weekday = new Array(7);
+        weekday[0] = "Sunday";
+        weekday[1] = "Monday";
+        weekday[2] = "Tuesday";
+        weekday[3] = "Wednesday";
+        weekday[4] = "Thursday";
+        weekday[5] = "Friday";
+        weekday[6] = "Saturday";
+    
+    document.getElementById('weekday1').innerText = weekday[dayOne];
+    document.getElementById('weekday2').innerText = weekday[dayTwo];
+    document.getElementById('weekday3').innerText = weekday[dayThree];
 
     let weatherIconOne = resultFromServer.list[8].weather[0].icon;
     let weatherIconTwo = resultFromServer.list[16].weather[0].icon;
@@ -330,10 +331,10 @@ async function setWeather(resultFromServer) {
 //     }
 // }
 
-function getDayOfWeek(date) {
-    var dayOfWeek = new Date(date).getDay();    
-    return isNaN(dayOfWeek) ? null : ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'][dayOfWeek];
-  }
+// function getDayOfWeek(date) {
+//     var dayOfWeek = new Date(date).getDay();    
+//     return isNaN(dayOfWeek) ? null : ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'][dayOfWeek];
+//     }
 
 module.exports.forecastWeather = forecastWeather;
 module.exports.setWeather = setWeather;
