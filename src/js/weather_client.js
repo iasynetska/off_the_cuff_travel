@@ -53,13 +53,9 @@ async function setWeather(resultFromServer) {
         weekday[5] = "Friday";
         weekday[6] = "Saturday";
 
-    let hourOne = new Date(resultFromServer.list[8].dt * 1000).getHours();
-    let hourTwo = new Date(resultFromServer.list[16].dt * 1000).getHours();
-    let hourThree = new Date(resultFromServer.list[24].dt * 1000).getHours();
-
-    document.getElementById('weekday1').innerText = weekday[dayOne] + ' at ' + hourOne + '.00';
-    document.getElementById('weekday2').innerText = weekday[dayTwo] + ' at ' + hourTwo + '.00';
-    document.getElementById('weekday3').innerText = weekday[dayThree] + ' at ' + hourThree + '.00';
+    document.getElementById('weekday1').innerText = weekday[dayOne];
+    document.getElementById('weekday2').innerText = weekday[dayTwo];
+    document.getElementById('weekday3').innerText = weekday[dayThree];
 
     let weatherIconOne = resultFromServer.list[8].weather[0].icon;
     let weatherIconTwo = resultFromServer.list[16].weather[0].icon;
