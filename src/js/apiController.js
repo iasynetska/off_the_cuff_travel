@@ -1,5 +1,6 @@
 var airPollutionClient = require('./airPollution_client.js');
 var weatherClient = require('./weather_client.js');
+var placesNametags = require('./places_nametags.js');
 var poiClient = require('./places_client.js');
 
 async function runApiClients(city) {
@@ -7,16 +8,9 @@ async function runApiClients(city) {
 		.then(pollutionData => airPollutionClient.setAirPollution(pollutionData));
 	weatherClient.forecastWeather(city.lat, city.lng)
 		.then(resultFromServer => weatherClient.setWeather(resultFromServer));
-	//console.log(city);
-
-	document.querySelector('.city-name-rel h1').innerText = city.city;
-	document.querySelector('.city-name-rel p').innerText = city.country;
-
-	document.getElementById('city-country').innerText = city.city;
-  document.getElementById('country').innerText = city.country;
-
 	poiClient.getPoi(city.lat, city.lng)
 		.then(poiData => poiClient.setPoi(poiData));
+	placesNametags.updateNametags(city.city, city.country);
 }
 
 module.exports.runApiClients = runApiClients;
