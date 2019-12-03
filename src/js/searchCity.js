@@ -24,7 +24,7 @@ document.getElementById('search-box').addEventListener('change', (e) => {
 			selectedOption = option;
 		}
 	})
-	let city = JSON.parse(selectedOption.getAttribute('data-city-coordinates'));
+	let city = JSON.parse(selectedOption.getAttribute('data-city'));
 	apiController.runApiClients(city);
 });
 
@@ -45,10 +45,11 @@ async function searchCities(value){
 function setCityOptionTags(matchCities) {
 	if (matchCities.length > 0) {
 		const listHtml = matchCities.map(cityObject => 
-			`<option class='city-el' data-city-coordinates='{"city":"${cityObject.city}", 
-																											"country":"${cityObject.country}", 
-																											"lat":${cityObject.lat}, 
-																											"lng":${cityObject.lng}}'
+			`<option class='city-el' data-city='{
+				"city":"${cityObject.city}", 
+				"country":"${cityObject.country}", 
+				"lat":${cityObject.lat}, 
+				"lng":${cityObject.lng}}'
 				>
 				${cityObject.city}, ${cityObject.country}
 			</option>`)

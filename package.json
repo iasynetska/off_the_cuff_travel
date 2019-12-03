@@ -1,5 +1,5 @@
 {
-  "name": "weather_project",
+  "name": "off_the_cuff_travel",
   "version": "1.0.0",
   "description": "",
   "private": true,
@@ -15,7 +15,7 @@
   "author": "",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/iasynetska/weather_project"
+    "url": "git+https://github.com/iasynetska/off_the_cuff_travel"
   },
   "license": "ISC",
   "devDependencies": {
