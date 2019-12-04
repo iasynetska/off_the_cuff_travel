@@ -2,21 +2,20 @@ const appId = 'ace7f80e9d662f6d6fbf5503dcf9bdf6';
 let units = 'metric';
 let searchMethod = 'q';
 
-async function forecastWeather(lat, lng) {
-    return await fetch(`http://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lng}&APPID=${appId}&units=${units}`)
+async function forecastWeather(city) {
+    document.getElementById('city-country').innerText = city.city;
+    document.getElementById('country').innerText = city.country;
+    return await fetch(`http://api.openweathermap.org/data/2.5/forecast?lat=${city.lat}&lon=${city.lng}&APPID=${appId}&units=${units}`)
     .then(response => response.json())
 }
 
 async function setWeather(resultFromServer) {
-    //console.log(resultFromServer);
 
     let currentWeatherIcon = document.querySelector('.bigger-icon img');
     let apiIcon = resultFromServer.list[0].weather[0].icon;
     currentWeatherIcon.src = decideIcon(apiIcon);
 
-
     document.getElementById('degrees').innerText = Math.floor(resultFromServer.list[0].main.temp);
-
     document.getElementById('humidity').innerText = resultFromServer.list[0].main.humidity;
 
     let windDegree = resultFromServer.list[0].wind.deg;
