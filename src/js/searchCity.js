@@ -1,7 +1,7 @@
 import 'core-js';
 const regeneratorRuntime = require("regenerator-runtime");
 
-var apiController = require('./apiController.js');
+const apiController = require('./apiController.js');
 let cities;
 
 // Fetch list of cities and assign to variable
@@ -25,6 +25,7 @@ document.getElementById('search-box').addEventListener('change', (e) => {
 		}
 	})
 	let city = JSON.parse(selectedOption.getAttribute('data-city'));
+	updateNameCity(city.city, city.country);
 	apiController.runApiClients(city);
 });
 
@@ -57,3 +58,10 @@ function setCityOptionTags(matchCities) {
     document.getElementById('cityList').innerHTML = listHtml;
 	}
 };
+
+
+//update city name and country name inside the 'city-name' container
+async function updateNameCity (cityName, countryName) {
+  document.querySelector('.city-name-rel h1').innerText = cityName;
+	document.querySelector('.city-name-rel p').innerText = countryName;
+}
