@@ -6,7 +6,7 @@ async function getAirPollution(lat, lon){
 		.then(response => response.json());
 }
 
-async function setAirPollution(pollutionData){	s
+async function setAirPollution(pollutionData){
 		let airPoll = pollutionData.data.current.pollution.aqius;
 		document.getElementById('air-pollution').innerHTML = airPoll;
 		document.getElementById('atm-pressure').innerHTML = pollutionData.data.current.weather.pr;
