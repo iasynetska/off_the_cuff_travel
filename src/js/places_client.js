@@ -5,7 +5,6 @@ async function getPoi(lat, lon){
 	return await fetch(`https://www.triposo.com/api/20190906/local_highlights.json?tag_labels=sightseeing&poi_fields=name,images,location_id&max_distance=20000&latitude=${lat}&longitude=${lon}&account=${accountId}&token=${apiToken}`)
 		.then(res => res.json());
 }
-//console.log(getPoi(51.1104, 17.03));
 
 async function setPoi(poiData) {
 		let poiName1 = poiData.results[0].pois[0].name;
@@ -20,7 +19,6 @@ async function setPoi(poiData) {
 		// WrocC582aw
 		// decode?
 		// add to the google url +${poiLocation1}
-
 
     document.querySelector('.places-to-see-box.box1').style.backgroundImage = `url("${poiImage1}")`;
 		document.querySelector('.places-to-see-box.box2').style.backgroundImage = `url("${poiImage2}")`;
@@ -56,7 +54,21 @@ async function setPoi(poiData) {
 		let caption3 = document.querySelector('.fig3');
 		caption3.innerHTML = poiName3;
 
-};
+
+		
+	let poiLocation1 = poiData.results[0].pois[0].location_id;
+	let poiImageMainResult = await getMainImage(poiLocation1);
+	let poiImageMain = poiImageMainResult.results[0].images[0].source_url
+		
+	document.querySelector('.header').style.backgroundImage = `url("${poiImageMain}")`;
+
+		async function getMainImage(locationID) {
+			return await fetch(`https://www.triposo.com/api/20190906/poi.json?fields=name,images&location_id=${locationID}&account=${accountId}&token=${apiToken}`)
+			.then(response => response.json())
+		}
+
+}
+
 
 module.exports.getPoi = getPoi;
 module.exports.setPoi = setPoi;
