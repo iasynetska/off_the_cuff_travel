@@ -1,37 +1,34 @@
-import 'core-js';
-const regeneratorRuntime = require("regenerator-runtime");
+require('core-js');
+require('regenerator-runtime');
 
-const apiController = require('./apiController.js');
-let cities;
+const updateHeaderWithCityAndCountry = require('./headerCityName.js');
+const runApiClients = require('./apiController.js');
 
-// Fetch list of cities and assign to variable
-fetch('/assets/data/cities.json').then(response => response.json()).then(result => cities = result);
-
-// Add listener to search-box, which searches cities
-document.getElementById('search-box').addEventListener('input', (e) => {
+function setSearchBarListeners(cities) {
+	// Add listener to search-box, which found cities
+	document.getElementById('search-box').addEventListener('input', (e) => {
 		if(e.target.value.length >= 3) {
-			searchCities(e.target.value);			
+			searchCities(e.target.value, cities);			
 		}
-});
+	});
 
-
-// Add listener to search-box, which picks selected city and run APIs
-document.getElementById('search-box').addEventListener('change', (e) => {
-	let selectedOption;
-	let options = document.querySelectorAll('.city-el');
-	options.forEach(option => {
-		if(option.text === e.target.value) {
-			selectedOption = option;
-		}
-	})
-	let city = JSON.parse(selectedOption.getAttribute('data-city'));
-	updateNameCity(city.city, city.country);
-	apiController.runApiClients(city);
-});
-
+	// Add listener to search-box, which picks selected city and run APIs
+	document.getElementById('search-box').addEventListener('change', (e) => {
+		let selectedOption;
+		let options = document.querySelectorAll('.city-el');
+		options.forEach(option => {
+			if(option.text === e.target.value) {
+				selectedOption = option;
+			}
+		})
+		let city = JSON.parse(selectedOption.getAttribute('data-city'));
+		updateHeaderWithCityAndCountry(city.city, city.country);
+		runApiClients(city);
+	});
+}
 
 //Search cities from full list of cities
-async function searchCities(value){
+async function searchCities(value, cities){
 	//Get match cities
 	let matchCities = cities.filter(cityObject => {
 		const regex = new RegExp(`^${value}`, 'gi');
@@ -59,9 +56,4 @@ function setCityOptionTags(matchCities) {
 	}
 };
 
-
-//update city name and country name inside the 'city-name' container
-async function updateNameCity (cityName, countryName) {
-  document.querySelector('.city-name-rel h1').innerText = cityName;
-	document.querySelector('.city-name-rel p').innerText = countryName;
-}
+module.exports = setSearchBarListeners;

@@ -1,4 +1,4 @@
-var vsprintf = require('sprintf-js').vsprintf;
+const vsprintf = require('sprintf-js').vsprintf;
 const key = 'e3611d69-4a6a-4ea3-9dc7-d5ed3c21b0be';
 
 async function getAirPollution(lat, lon){
@@ -6,7 +6,7 @@ async function getAirPollution(lat, lon){
 		.then(response => response.json());
 }
 
-async function setAirPollution(pollutionData){	
+async function setAirPollution(pollutionData){	s
 		let airPoll = pollutionData.data.current.pollution.aqius;
 		document.getElementById('air-pollution').innerHTML = airPoll;
 		document.getElementById('atm-pressure').innerHTML = pollutionData.data.current.weather.pr;

@@ -1,6 +1,6 @@
-var airPollutionClient = require('./airPollution_client.js');
-var weatherClient = require('./weather_client.js');
-var poiClient = require('./places_client.js');
+const airPollutionClient = require('./airPollution_client.js');
+const weatherClient = require('./weather_client.js');
+const poiClient = require('./places_client.js');
 
 async function runApiClients(city) {
 	airPollutionClient.getAirPollution(city.lat, city.lng)
@@ -11,4 +11,4 @@ async function runApiClients(city) {
 		.then(poiData => poiClient.setPoi(poiData));
 }
 
-module.exports.runApiClients = runApiClients;
+module.exports = runApiClients;
