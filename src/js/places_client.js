@@ -6,6 +6,7 @@ async function getPoi(lat, lon){
 		.then(res => res.json());
 }
 
+// poi images
 async function setPoi(poiData) {
 		let poiName1 = poiData.results[0].pois[0].name;
     let poiImage1 = poiData.results[0].pois[0].images[0].sizes.medium.url;
@@ -54,21 +55,33 @@ async function setPoi(poiData) {
 		let caption3 = document.querySelector('.fig3');
 		caption3.innerHTML = poiName3;
 
+		// header image
+		let poiLocation1 = poiData.results[0].pois[0].location_id;
+		let poiImageMainResult = await getMainImage(poiLocation1);
+		let poiImageMain = poiImageMainResult.results[0].images[0].source_url
 
-		
-	let poiLocation1 = poiData.results[0].pois[0].location_id;
-	let poiImageMainResult = await getMainImage(poiLocation1);
-	let poiImageMain = poiImageMainResult.results[0].images[0].source_url
-		
-	document.querySelector('.header').style.backgroundImage = `url("${poiImageMain}")`;
-
-		async function getMainImage(locationID) {
-			return await fetch(`https://www.triposo.com/api/20190906/poi.json?fields=name,images&location_id=${locationID}&account=${accountId}&token=${apiToken}`)
-			.then(response => response.json())
-		}
-
+		document.querySelector('.header').style.backgroundImage = `url("${poiImageMain}")`;
 }
+
+// header image API
+async function getMainImage(locationID) {
+		return await fetch(`https://www.triposo.com/api/20190906/poi.json?fields=name,images&location_id=${locationID}&account=${accountId}&token=${apiToken}`)
+		.then(response => response.json())
+};
+
+let lackImage = function() {
+	let phantomImage1 = '/assets/img/unicorn1.jpg'
+	let phantomImage2 = '/assets/img/unicorn2.jpg'
+	let phantomImage3 = '/assets/img/unicorn3.jpg'
+	let phantomHeader = '/assets/img/pegasus.jpg'
+
+	document.querySelector('.places-to-see-box.box1').style.backgroundImage = `url("${phantomImage1}")`;
+	document.querySelector('.places-to-see-box.box2').style.backgroundImage = `url("${phantomImage2}")`;
+	document.querySelector('.places-to-see-box.box3').style.backgroundImage = `url("${phantomImage3}")`;
+	document.querySelector('.header').style.backgroundImage = `url("${phantomHeader}")`;
+};
 
 
 module.exports.getPoi = getPoi;
 module.exports.setPoi = setPoi;
+module.exports.lackImage = lackImage;

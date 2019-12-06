@@ -8,7 +8,8 @@ async function runApiClients(city) {
 	weatherClient.forecastWeather(city)
 		.then(resultFromServer => weatherClient.setWeather(resultFromServer));
 	poiClient.getPoi(city.lat, city.lng)
-		.then(poiData => poiClient.setPoi(poiData));
+		.then(poiData => poiClient.setPoi(poiData))
+		.catch(poiClient.lackImage);
 }
 
 module.exports = runApiClients;
