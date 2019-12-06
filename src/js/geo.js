@@ -2,14 +2,10 @@ const updateHeaderWithCityAndCountry = require('./headerCityName.js');
 const runApiClients = require('./apiController.js');
 
 function asignNearestCity(cities) {
-  if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(position => {
-      findAndAsignCity(position.coords.latitude, position.coords.longitude, cities);
-    });
-  } else {
-    let lat = 51.1104;
-    let lon = 17.03;
-  }
+  navigator.geolocation.getCurrentPosition(
+    position => findAndAsignCity(position.coords.latitude, position.coords.longitude, cities), 
+    error => findAndAsignCity(51.1104, 17.03, cities)
+  );
 }
 
 // find nearest city, assign it to header and run all apis
