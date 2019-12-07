@@ -23,9 +23,29 @@ async function setAirPollution(pollutionData){
 			resultPollution = 'Very Unhealthy';
 		} else if(airPoll>301 && airPoll<=500) {
 			resultPollution = 'Hazardous';
-		} 
+		} else {
+			resultPollution = 'Lack of data';
+		}
 		document.getElementById('harmfulness').innerHTML = resultPollution;
+}
+
+function lackData() {
+	let pollutionData = {
+		data: {
+			current: {
+				pollution: {
+					aqius: 'N/A'
+				},
+				weather: {
+					pr: 'N/A'
+				}
+			}
+		}
+	};
+
+	setAirPollution(pollutionData);
 }
 
 module.exports.getAirPollution = getAirPollution;
 module.exports.setAirPollution = setAirPollution;
+module.exports.lackData = lackData;
