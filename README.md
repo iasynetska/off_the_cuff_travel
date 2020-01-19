@@ -15,9 +15,9 @@ npm run start
 
 ## Technologies
 
-* [HTML]
-* [CSS]
-* [JavaScript]
+* HTML
+* CSS
+* JavaScript
 * [Node.js](https://nodejs.org/en/)
 * [Webpack](https://webpack.js.org/)
 * [Babel](https://babeljs.io/)
