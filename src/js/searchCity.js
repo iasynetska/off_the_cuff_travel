@@ -2,6 +2,7 @@ require('core-js');
 require('regenerator-runtime');
 
 const updateHeaderWithCityAndCountry = require('./headerCityName.js');
+const updateCurrencyName = require('./currencyName.js');
 const runApiClients = require('./apiController.js');
 
 function setSearchBarListeners(cities) {
@@ -23,6 +24,7 @@ function setSearchBarListeners(cities) {
 		})
 		let city = JSON.parse(selectedOption.getAttribute('data-city'));
 		updateHeaderWithCityAndCountry(city.city, city.country);
+		updateCurrencyName(city.currency, city.codeCurrency);
 		runApiClients(city);
 	});
 }

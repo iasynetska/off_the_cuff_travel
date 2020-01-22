@@ -1,4 +1,5 @@
 const updateHeaderWithCityAndCountry = require('./headerCityName.js');
+const updateCurrencyName = require('./currencyName.js');
 const runApiClients = require('./apiController.js');
 
 function assignNearestCity(cities) {
@@ -20,6 +21,7 @@ function findAndAssignCity(lat, lon, cities) {
       distance = distance2;
     }
   }
+  updateCurrencyName(city.currency, city.codeCurrency);
   updateHeaderWithCityAndCountry(city.city, city.country);
   runApiClients(city);
 }

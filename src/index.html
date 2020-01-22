@@ -116,59 +116,57 @@
     </div>
 
     <!-- ===== Weather-pollution column ===== -->
-    <div class='weather-pollution-column'>
+    <div class='information weather-pollution-column'>
 
       <!-- ===== Current weather box ===== -->
-      <div class='bigger-box'>
+      <div class='information-weather bigger-box'>
         <div class='bigger-icon'>
           <div>
             <img src='/assets/img/sun.svg' />
           </div>
         </div>
         <div class='bigger-box-temp'>
-            <p><span id="degrees">14</span>&deg;<sup>C</sup></p>
+            <p><span id="degrees"></span>&deg;<sup>C</sup></p>
         </div>
         <div class='bigger-box-city'>
-            <p ><span id="city-country">Wrocław</span><br/><span id="country">Poland</span>
+            <p ><span id="city-country"></span><br/><span id="country"></span>
             </p>
         </div>
           <div class='bigger-box-lower-row'>
-            <p>Humidity: <span id="humidity">15</span>&percnt;</p>
+            <p>Humidity: <span id="humidity"></span>&percnt;</p>
           </div>
           <div class='bigger-box-lower-row middle'>
-            <p id="wind-direction">East</p>
+            <p id="wind-direction"></p>
           </div>
           <div class='bigger-box-lower-row'>
-            <p><span id="wind-speed">12</span> km/h</p>
+            <p><span id="wind-speed"></span> km/h</p>
           </div>
       </div>
 
       <!-- ===== Pollution box ===== -->
-      <div class='bigger-box'>
+      <div class='information-weather bigger-box'>
         <div class='pollution-value'>
           <div>
-            <p id="air-pollution">158</p>
+            <p id="air-pollution"></p>
           </div>
         </div>
         <div class='bigger-box-pollution'>
-            <p><span id="harmfulness">Unhealthy</span><br/>
+            <p><span id="harmfulness"></span><br/>
             Current Air Quality Index<br/>
             <sub>Based on US EPA standard</sub></p>
         </div>
           <div class='bigger-box-pollution-lower row2 middle'>
-            <p>Atmospheric Pressure: <span id="atm-pressure">976</span> hPa</p>
+            <p>Atmospheric Pressure: <span id="atm-pressure"></span> hPa</p>
           </div>
       </div>
 
       <!-- ===== Currency box ===== -->
-      <div class='smaller-box'>
-        <div class='smaller-icon'>
-          <div>
-            <img src='/assets/img/money.svg' />
-          </div>
+      <div class='information-currency smaller-box'>
+        <div class='information-currency__icon smaller-icon'>
+          <img src='/assets/img/money.svg' />
         </div>
-        <div class='smaller-box-text'>
-            <p>Currency: <span>Złoty (PLN)</span></p>
+        <div class='information-currency__data smaller-box-text'>
+            <p><span class="currency-name">Złoty</span>&nbsp;&#40;<span class="currency-code"></span>&#41;</p>
         </div>
       </div>
 
