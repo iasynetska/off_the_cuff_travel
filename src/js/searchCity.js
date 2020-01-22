@@ -28,7 +28,7 @@ function setSearchBarListeners(cities) {
 }
 
 //Search cities from full list of cities
-async function searchCities(value, cities){
+async function searchCities(value, cities) {
 	//Get match cities
 	let matchCities = cities.filter(cityObject => {
 		const regex = new RegExp(`^${value}`, 'gi');
@@ -46,9 +46,11 @@ function setCityOptionTags(matchCities) {
 			`<option class='city-el' data-city='{
 				"city":"${cityObject.city}", 
 				"country":"${cityObject.country}", 
-				"lat":${cityObject.lat}, 
-				"lon":${cityObject.lon}}'
-				>
+				"lat":${cityObject.lat},
+				"lon":${cityObject.lon},
+				"currency":"${cityObject.currency}",
+				"codeCurrency":"${cityObject.codeCurrency}"}'
+			>
 				${cityObject.city}, ${cityObject.country}
 			</option>`)
 		.join('');

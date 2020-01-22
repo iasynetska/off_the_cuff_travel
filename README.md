@@ -10,7 +10,7 @@ Clone the application and run a following commands in the root directory
 npm install
 ```
 ```
-npm run start
+npm run dev
 ```
 
 ## Technologies
