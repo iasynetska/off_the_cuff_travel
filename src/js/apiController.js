@@ -4,9 +4,9 @@ const poiClient = require('./places_client.js');
 
 async function runApiClients(city) {
 	Promise.all([
-		airPollutionClient.getAirPollution(city.lat, city.lng),
+		airPollutionClient.getAirPollution(city.lat, city.lon),
 		weatherClient.forecastWeather(city),
-		poiClient.getPoi(city.lat, city.lng)
+		poiClient.getPoi(city.lat, city.lon)
 	]).then(
 		response => {
 			airPollutionClient.setAirPollution(response[0]).catch(airPollutionClient.lackData);

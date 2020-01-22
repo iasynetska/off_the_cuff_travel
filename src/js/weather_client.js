@@ -5,7 +5,7 @@ let searchMethod = 'q';
 async function forecastWeather(city) {
     document.getElementById('city-country').innerText = city.city;
     document.getElementById('country').innerText = city.country;
-    return await fetch(`http://api.openweathermap.org/data/2.5/forecast?lat=${city.lat}&lon=${city.lng}&APPID=${appId}&units=${units}`)
+    return await fetch(`http://api.openweathermap.org/data/2.5/forecast?lat=${city.lat}&lon=${city.lon}&APPID=${appId}&units=${units}`)
     .then(response => response.json())
 }
 

@@ -47,7 +47,7 @@ function setCityOptionTags(matchCities) {
 				"city":"${cityObject.city}", 
 				"country":"${cityObject.country}", 
 				"lat":${cityObject.lat}, 
-				"lng":${cityObject.lng}}'
+				"lon":${cityObject.lon}}'
 				>
 				${cityObject.city}, ${cityObject.country}
 			</option>`)

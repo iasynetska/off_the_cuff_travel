@@ -1,20 +1,20 @@
 const updateHeaderWithCityAndCountry = require('./headerCityName.js');
 const runApiClients = require('./apiController.js');
 
-function asignNearestCity(cities) {
+function assignNearestCity(cities) {
   navigator.geolocation.getCurrentPosition(
-    position => findAndAsignCity(position.coords.latitude, position.coords.longitude, cities), 
-    error => findAndAsignCity(51.1104, 17.03, cities)
+    position => findAndAssignCity(position.coords.latitude, position.coords.longitude, cities),
+    error => findAndAssignCity(51.1104, 17.03, cities)
   );
 }
 
 // find nearest city, assign it to header and run all apis
-function findAndAsignCity(lat, lon, cities) {
+function findAndAssignCity(lat, lon, cities) {
   let city = cities[0];
-  let distance = getDistance(city.lat, city.lng, lat, lon);
+  let distance = getDistance(city.lat, city.lon, lat, lon);
   
   for (let i=1; i<cities.length; i++) {
-    let distance2 = getDistance(cities[i].lat, cities[i].lng, lat, lon);
+    let distance2 = getDistance(cities[i].lat, cities[i].lon, lat, lon);
     if(distance2 < distance) {
       city = cities[i];
       distance = distance2;
@@ -30,11 +30,11 @@ function getDistance(lat1, lon1, lat2, lon2) {
     return 0;
   }
   else {
-    var radlat1 = Math.PI * lat1/180;
-    var radlat2 = Math.PI * lat2/180;
-    var theta = lon1-lon2;
-    var radtheta = Math.PI * theta/180;
-    var dist = Math.sin(radlat1) * Math.sin(radlat2) + Math.cos(radlat1) * Math.cos(radlat2) * Math.cos(radtheta);
+    let radlat1 = Math.PI * lat1/180;
+    let radlat2 = Math.PI * lat2/180;
+    let theta = lon1-lon2;
+    let radtheta = Math.PI * theta/180;
+    let dist = Math.sin(radlat1) * Math.sin(radlat2) + Math.cos(radlat1) * Math.cos(radlat2) * Math.cos(radtheta);
     if (dist > 1) {
       dist = 1;
     }
@@ -46,4 +46,4 @@ function getDistance(lat1, lon1, lat2, lon2) {
   }
 }
 
-module.exports = asignNearestCity;
+module.exports = assignNearestCity;
