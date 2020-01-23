@@ -41,6 +41,7 @@
   "dependencies": {
     "core-js": "^3.4.5",
     "regenerator-runtime": "^0.13.3",
-    "sprintf-js": "^1.1.2"
+    "sprintf-js": "^1.1.2",
+    "timezoner": "^0.2.0"
   }
 }

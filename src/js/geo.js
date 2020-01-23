@@ -1,4 +1,5 @@
 const updateHeaderWithCityAndCountry = require('./headerCityName.js');
+const updateFlagImg = require('./flagEditor.js');
 const updateCurrencyName = require('./currencyName.js');
 const runApiClients = require('./apiController.js');
 
@@ -22,6 +23,7 @@ function findAndAssignCity(lat, lon, cities) {
     }
   }
   updateCurrencyName(city.currency, city.codeCurrency);
+  updateFlagImg(city.codeCountry);
   updateHeaderWithCityAndCountry(city.city, city.country);
   runApiClients(city);
 }
