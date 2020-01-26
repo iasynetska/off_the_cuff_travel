@@ -2,7 +2,7 @@
 
 Web application that allows a traveler to get different data about a chosen city (weather, air pollution, sights, currency and flag of country)
 
-![Main page](https://github.com/iasynetska/off_the_cuff_travel/blob/master/src/img/mainPage.jpg)
+<img src="https://github.com/iasynetska/off_the_cuff_travel/blob/master/src/img/mainPage.jpg" width="600">
 
 ## Getting Started
 
@@ -30,7 +30,3 @@ npm run dev
 * [Weather](https://openweathermap.org/api)
 * [Air pollution](https://www.airvisual.com/air-pollution-data-api)
 * [Sights](https://www.triposo.com/api/)
-
-## Preview
-
-![Main page](https://github.com/iasynetska/off_the_cuff_travel/blob/master/src/img/mainPage.jpg)
