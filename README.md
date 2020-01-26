@@ -2,6 +2,8 @@
 
 Web application that allows a traveler to get different data about a chosen city (weather, air pollution, sights, currency and flag of country)
 
+![Main page](https://github.com/iasynetska/off_the_cuff_travel/blob/master/src/img/mainPage.jpg)
+
 ## Getting Started
 
 Clone the application and run a following commands in the root directory
