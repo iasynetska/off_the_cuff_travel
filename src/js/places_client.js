@@ -8,72 +8,66 @@ async function getPoi(lat, lon){
 
 // poi images
 async function setPoi(poiData) {
-		let poiName1 = poiData.results[0].pois[0].name;
+	let poiName1 = poiData.results[0].pois[0].name;
     let poiImage1 = poiData.results[0].pois[0].images[0].sizes.medium.url;
     let poiName2 = poiData.results[0].pois[1].name;
     let poiImage2 = poiData.results[0].pois[1].images[0].sizes.medium.url;
     let poiName3 = poiData.results[0].pois[2].name;
     let poiImage3 = poiData.results[0].pois[2].images[0].sizes.medium.url;
 
-
-		// let poiLocation1 = poiData.results[0].pois[0].location_id;
-		// WrocC582aw
-		// decode?
-		// add to the google url +${poiLocation1}
-
     document.querySelector('.places-to-see-box.box1').style.backgroundImage = `url("${poiImage1}")`;
-		document.querySelector('.places-to-see-box.box2').style.backgroundImage = `url("${poiImage2}")`;
-		document.querySelector('.places-to-see-box.box3').style.backgroundImage = `url("${poiImage3}")`;
+	document.querySelector('.places-to-see-box.box2').style.backgroundImage = `url("${poiImage2}")`;
+	document.querySelector('.places-to-see-box.box3').style.backgroundImage = `url("${poiImage3}")`;
 
-		let image1 = document.querySelector('.places-to-see-box.box1');
-		let wrapper1 = document.createElement('a');
-		wrapper1.setAttribute('href', `http://www.google.com/search?q=${poiName1}`);
-		wrapper1.setAttribute('target', '_blank');
-		wrapper1.setAttribute('class', 'change-wrapper');
-		wrapper1.appendChild(image1.cloneNode(true));
-		image1.parentNode.replaceChild(wrapper1, image1);
-		let caption1 = document.querySelector('.fig1');
-		caption1.innerHTML = poiName1;
+	let image1 = document.querySelector('.places-to-see-box.box1');
+	let wrapper1 = document.createElement('a');
+	wrapper1.setAttribute('href', `http://www.google.com/search?q=${poiName1}`);
+	wrapper1.setAttribute('target', '_blank');
+	wrapper1.setAttribute('class', 'change-wrapper');
+	wrapper1.appendChild(image1.cloneNode(true));
+	image1.parentNode.replaceChild(wrapper1, image1);
+	let caption1 = document.querySelector('.fig1');
+	caption1.innerHTML = poiName1;
 
-		let image2 = document.querySelector('.places-to-see-box.box2');
-		let wrapper2 = document.createElement('a')
-		wrapper2.setAttribute('href', `http://www.google.com/search?q=${poiName2}`)
-		wrapper1.setAttribute('target', '_blank');
-		wrapper2.setAttribute('class', 'change-wrapper2');
-		wrapper2.appendChild(image2.cloneNode(true));
-		image2.parentNode.replaceChild(wrapper2, image2);
-		let caption2 = document.querySelector('.fig2');
-		caption2.innerHTML = poiName2;
+	let image2 = document.querySelector('.places-to-see-box.box2');
+	let wrapper2 = document.createElement('a');
+	wrapper2.setAttribute('href', `http://www.google.com/search?q=${poiName2}`);
+	wrapper1.setAttribute('target', '_blank');
+	wrapper2.setAttribute('class', 'change-wrapper2');
+	wrapper2.appendChild(image2.cloneNode(true));
+	image2.parentNode.replaceChild(wrapper2, image2);
+	let caption2 = document.querySelector('.fig2');
+	caption2.innerHTML = poiName2;
 
-		let image3 = document.querySelector('.places-to-see-box.box3');
-		let wrapper3 = document.createElement('a')
-		wrapper3.setAttribute('href', `http://www.google.com/search?q=${poiName3}`)
-		wrapper1.setAttribute('target', '_blank');
-		wrapper3.setAttribute('class', 'change-wrapper3');
-		wrapper3.appendChild(image3.cloneNode(true));
-		image3.parentNode.replaceChild(wrapper3, image3);
-		let caption3 = document.querySelector('.fig3');
-		caption3.innerHTML = poiName3;
+	let image3 = document.querySelector('.places-to-see-box.box3');
+	let wrapper3 = document.createElement('a');
+	wrapper3.setAttribute('href', `http://www.google.com/search?q=${poiName3}`);
+	wrapper1.setAttribute('target', '_blank');
+	wrapper3.setAttribute('class', 'change-wrapper3');
+	wrapper3.appendChild(image3.cloneNode(true));
+	image3.parentNode.replaceChild(wrapper3, image3);
+	let caption3 = document.querySelector('.fig3');
+	caption3.innerHTML = poiName3;
 
-		// header image
-		let poiLocation1 = poiData.results[0].pois[0].location_id;
-		let poiImageMainResult = await getMainImage(poiLocation1);
-		let poiImageMain = poiImageMainResult.results[0].images[0].source_url
+	// header image
+	let poiLocation1 = poiData.results[0].pois[0].location_id;
+	let poiImageMainResult = await getMainImage(poiLocation1);
+	let poiImageMain = poiImageMainResult.results[0].images[0].source_url;
 
-		document.querySelector('.header').style.backgroundImage = `url("${poiImageMain}")`;
+	document.querySelector('.header').style.backgroundImage = `url("${poiImageMain}")`;
 }
 
 // header image API
 async function getMainImage(locationID) {
 		return await fetch(`https://www.triposo.com/api/20190906/poi.json?fields=name,images&location_id=${locationID}&account=${accountId}&token=${apiToken}`)
 		.then(response => response.json())
-};
+}
 
 let lackImage = function() {
-	let phantomImage1 = '/assets/img/unicorn1.jpg'
-	let phantomImage2 = '/assets/img/unicorn2.jpg'
-	let phantomImage3 = '/assets/img/unicorn3.jpg'
-	let phantomHeader = '/assets/img/pegasus.jpg'
+	let phantomImage1 = '/assets/img/unicorn1.jpg';
+	let phantomImage2 = '/assets/img/unicorn2.jpg';
+	let phantomImage3 = '/assets/img/unicorn3.jpg';
+	let phantomHeader = '/assets/img/pegasus.jpg';
 
 	document.querySelector('.places-to-see-box.box1').style.backgroundImage = `url("${phantomImage1}")`;
 	document.querySelector('.places-to-see-box.box2').style.backgroundImage = `url("${phantomImage2}")`;

@@ -10,7 +10,6 @@ async function forecastWeather(city) {
 }
 
 async function setWeather(resultFromServer) {
-
     let currentWeatherIcon = document.querySelector('.bigger-icon img');
     let apiIcon = resultFromServer.list[0].weather[0].icon;
     currentWeatherIcon.src = decideIcon(apiIcon);
@@ -74,7 +73,6 @@ async function setWeather(resultFromServer) {
     document.getElementById('degrees-day1').innerText = Math.floor(resultFromServer.list[8].main.temp);
     document.getElementById('degrees-day2').innerText = Math.floor(resultFromServer.list[16].main.temp);
     document.getElementById('degrees-day3').innerText = Math.floor(resultFromServer.list[24].main.temp);
-
 }
 
 function decideIcon(icon) {
