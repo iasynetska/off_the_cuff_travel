@@ -1,6 +1,6 @@
 # Off The Cuff Travel
 
-Web application that allows a traveler to get different data about a chosen city (weather, air pollution, sights)
+Web application that allows a traveler to get different data about a chosen city (weather, air pollution, sights, currency and flag of country)
 
 ## Getting Started
 
