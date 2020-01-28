@@ -8,12 +8,14 @@ async function getPoi(lat, lon){
 
 // poi images
 async function setPoi(poiData) {
+	console.log(poiData);
 	let poiName1 = poiData.results[0].pois[0].name;
     let poiImage1 = poiData.results[0].pois[0].images[0].sizes.medium.url;
     let poiName2 = poiData.results[0].pois[1].name;
     let poiImage2 = poiData.results[0].pois[1].images[0].sizes.medium.url;
     let poiName3 = poiData.results[0].pois[2].name;
     let poiImage3 = poiData.results[0].pois[2].images[0].sizes.medium.url;
+    let poiImageMain = poiData.results[0].pois[3].images[0].sizes.medium.url;
 
     document.querySelector('.places-to-see-box.box1').style.backgroundImage = `url("${poiImage1}")`;
 	document.querySelector('.places-to-see-box.box2').style.backgroundImage = `url("${poiImage2}")`;
@@ -49,18 +51,7 @@ async function setPoi(poiData) {
 	let caption3 = document.querySelector('.fig3');
 	caption3.innerHTML = poiName3;
 
-	// header image
-	let poiLocation1 = poiData.results[0].pois[0].location_id;
-	let poiImageMainResult = await getMainImage(poiLocation1);
-	let poiImageMain = poiImageMainResult.results[0].images[0].source_url;
-
 	document.querySelector('.header').style.backgroundImage = `url("${poiImageMain}")`;
-}
-
-// header image API
-async function getMainImage(locationID) {
-		return await fetch(`https://www.triposo.com/api/20190906/poi.json?fields=name,images&location_id=${locationID}&account=${accountId}&token=${apiToken}`)
-		.then(response => response.json())
 }
 
 let lackImage = function() {
