@@ -1,10 +1,7 @@
 const appId = 'ace7f80e9d662f6d6fbf5503dcf9bdf6';
 let units = 'metric';
-let searchMethod = 'q';
 
 async function forecastWeather(city) {
-    document.getElementById('city-country').innerText = city.city;
-    document.getElementById('country').innerText = city.country;
     return await fetch(`http://api.openweathermap.org/data/2.5/forecast?lat=${city.lat}&lon=${city.lon}&APPID=${appId}&units=${units}`)
     .then(response => response.json())
 }
@@ -19,23 +16,24 @@ async function setWeather(resultFromServer) {
 
     let windDegree = resultFromServer.list[0].wind.deg;
     let windDirection;
-		if(windDegree>=22.5 && windDegree<67.5) {
-			windDirection = 'North East';
-		} else if(windDegree>=67.5 && windDegree<112.5) {
-			windDirection = 'East';
-		} else if(windDegree>=112.5 && windDegree<157.5) {
-			windDirection = 'South East';
-		} else if(windDegree>=157.5 && windDegree<202.5) {
-			windDirection = 'South';
-		} else if(windDegree>=202.5 && windDegree<247.5) {
-			windDirection = 'South West';
-		} else if(windDegree>=247.5 && windDegree<292.5) {
-            windDirection = 'West';
-        } else if(windDegree>=292.5 && windDegree<337.5) {
-			windDirection = 'North West';
-        } else {windDirection = 'North'}
-        document.getElementById('wind-direction').innerText = windDirection;
 
+    if(windDegree>=22.5 && windDegree<67.5) {
+        windDirection = 'North East';
+    } else if(windDegree>=67.5 && windDegree<112.5) {
+        windDirection = 'East';
+    } else if(windDegree>=112.5 && windDegree<157.5) {
+        windDirection = 'South East';
+    } else if(windDegree>=157.5 && windDegree<202.5) {
+        windDirection = 'South';
+    } else if(windDegree>=202.5 && windDegree<247.5) {
+        windDirection = 'South West';
+    } else if(windDegree>=247.5 && windDegree<292.5) {
+        windDirection = 'West';
+    } else if(windDegree>=292.5 && windDegree<337.5) {
+        windDirection = 'North West';
+    } else {windDirection = 'North'}
+
+    document.getElementById('wind-direction').innerText = windDirection;
     document.getElementById('wind-speed').innerText = Math.floor(resultFromServer.list[0].wind.speed);
 
     let dayOne = new Date(resultFromServer.list[8].dt * 1000).getDay();
@@ -43,13 +41,13 @@ async function setWeather(resultFromServer) {
     let dayThree = new Date(resultFromServer.list[24].dt * 1000).getDay();
 
     const weekday = new Array(7);
-        weekday[0] = "Sunday";
-        weekday[1] = "Monday";
-        weekday[2] = "Tuesday";
-        weekday[3] = "Wednesday";
-        weekday[4] = "Thursday";
-        weekday[5] = "Friday";
-        weekday[6] = "Saturday";
+    weekday[0] = "Sunday";
+    weekday[1] = "Monday";
+    weekday[2] = "Tuesday";
+    weekday[3] = "Wednesday";
+    weekday[4] = "Thursday";
+    weekday[5] = "Friday";
+    weekday[6] = "Saturday";
 
     document.getElementById('weekday1').innerText = weekday[dayOne];
     document.getElementById('weekday2').innerText = weekday[dayTwo];
@@ -63,11 +61,11 @@ async function setWeather(resultFromServer) {
     document.getElementById('icon-day2').src = decideIcon(weatherIconTwo);
     document.getElementById('icon-day3').src = decideIcon(weatherIconThree);
 
-    let descDayOne = resultFromServer.list[8].weather[0].description
+    let descDayOne = resultFromServer.list[8].weather[0].description;
     document.getElementById('weather-day1').innerText = descDayOne.charAt(0).toUpperCase() + descDayOne.slice(1);
-    let descDayTwo = resultFromServer.list[16].weather[0].description
+    let descDayTwo = resultFromServer.list[16].weather[0].description;
     document.getElementById('weather-day2').innerText = descDayTwo.charAt(0).toUpperCase() + descDayTwo.slice(1);
-    let descDayThree = resultFromServer.list[24].weather[0].description
+    let descDayThree = resultFromServer.list[24].weather[0].description;
     document.getElementById('weather-day3').innerText = descDayThree.charAt(0).toUpperCase() + descDayThree.slice(1);
 
     document.getElementById('degrees-day1').innerText = Math.floor(resultFromServer.list[8].main.temp);
@@ -90,7 +88,6 @@ function decideIcon(icon) {
         } else if(icon === '50d' || icon === '50n') {return '/assets/img/fog.svg';
         };
     }
-
 
 module.exports.forecastWeather = forecastWeather;
 module.exports.setWeather = setWeather;

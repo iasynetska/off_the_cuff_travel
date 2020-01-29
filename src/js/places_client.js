@@ -8,7 +8,6 @@ async function getPoi(lat, lon){
 
 // poi images
 async function setPoi(poiData) {
-	console.log(poiData);
 	let poiName1 = poiData.results[0].pois[0].name;
     let poiImage1 = poiData.results[0].pois[0].images[0].sizes.medium.url;
     let poiName2 = poiData.results[0].pois[1].name;

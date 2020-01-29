@@ -1,6 +1,7 @@
 const airPollutionClient = require('./airPollution_client.js');
 const weatherClient = require('./weather_client.js');
 const poiClient = require('./places_client.js');
+const setSelectedCity = require('./selectedCityController');
 
 async function runApiClients(city) {
 	Promise.all([
@@ -12,6 +13,7 @@ async function runApiClients(city) {
 			airPollutionClient.setAirPollution(response[0]).catch(airPollutionClient.lackData);
 			weatherClient.setWeather(response[1]).catch(error => console.log(error));
 			poiClient.setPoi(response[2]).catch(poiClient.lackImage);
+			setSelectedCity(city);
 		}
 	)
 }
