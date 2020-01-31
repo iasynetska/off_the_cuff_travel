@@ -1,19 +1,21 @@
 const airPollutionClient = require('./airPollution_client.js');
 const weatherClient = require('./weather_client.js');
-const poiClient = require('./places_client.js');
-const setSelectedCity = require('./selectedCityController');
+const sightsClient = require('./places_client.js');
+const mainScreenUpdater = require('./mainSreenUpdater.js');
 
 async function runApiClients(city) {
 	Promise.all([
-		airPollutionClient.getAirPollution(city.lat, city.lon),
 		weatherClient.forecastWeather(city),
-		poiClient.getPoi(city.lat, city.lon)
-	]).then(
+		airPollutionClient.getAirPollution(city.lat, city.lon).catch(airPollutionClient.lackData),
+		sightsClient.getSights(city.lat, city.lon).catch(sightsClient.lackData)])
+	.then(
 		response => {
-			airPollutionClient.setAirPollution(response[0]).catch(airPollutionClient.lackData);
-			weatherClient.setWeather(response[1]).catch(error => console.log(error));
-			poiClient.setPoi(response[2]).catch(poiClient.lackImage);
-			setSelectedCity(city);
+			mainScreenUpdater.updateWeather(response[0]);
+			mainScreenUpdater.updateAirPollution(response[1]);
+			mainScreenUpdater.updateSights(response[2]);
+			mainScreenUpdater.updateCityAndCountry(city.city, city.country);
+			mainScreenUpdater.updateCurrencyName(city.currency, city.codeCurrency);
+			mainScreenUpdater.updateFlagImg(city.codeCountry);
 		}
 	)
 }

@@ -22,7 +22,7 @@ function findAndAssignCity(lat, lon, cities) {
   runApiClients(city);
 }
 
-// calclate distance between two coordinates
+// calculate distance between two coordinates
 function getDistance(lat1, lon1, lat2, lon2) {
   if ((lat1 == lat2) && (lon1 == lon2)) {
     return 0;

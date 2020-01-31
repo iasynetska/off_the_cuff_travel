@@ -4,90 +4,93 @@ let units = 'metric';
 async function forecastWeather(city) {
     return await fetch(`http://api.openweathermap.org/data/2.5/forecast?lat=${city.lat}&lon=${city.lon}&APPID=${appId}&units=${units}`)
     .then(response => response.json())
+    .then((json) => prepareResponseWeather(json));
 }
 
-async function setWeather(resultFromServer) {
-    let currentWeatherIcon = document.querySelector('.bigger-icon img');
-    let apiIcon = resultFromServer.list[0].weather[0].icon;
-    currentWeatherIcon.src = decideIcon(apiIcon);
-
-    document.getElementById('degrees').innerText = Math.floor(resultFromServer.list[0].main.temp);
-    document.getElementById('humidity').innerText = resultFromServer.list[0].main.humidity;
-
-    let windDegree = resultFromServer.list[0].wind.deg;
-    let windDirection;
-
-    if(windDegree>=22.5 && windDegree<67.5) {
-        windDirection = 'North East';
-    } else if(windDegree>=67.5 && windDegree<112.5) {
-        windDirection = 'East';
-    } else if(windDegree>=112.5 && windDegree<157.5) {
-        windDirection = 'South East';
-    } else if(windDegree>=157.5 && windDegree<202.5) {
-        windDirection = 'South';
-    } else if(windDegree>=202.5 && windDegree<247.5) {
-        windDirection = 'South West';
-    } else if(windDegree>=247.5 && windDegree<292.5) {
-        windDirection = 'West';
-    } else if(windDegree>=292.5 && windDegree<337.5) {
-        windDirection = 'North West';
-    } else {windDirection = 'North'}
-
-    document.getElementById('wind-direction').innerText = windDirection;
-    document.getElementById('wind-speed').innerText = Math.floor(resultFromServer.list[0].wind.speed);
-
-    let dayOne = new Date(resultFromServer.list[8].dt * 1000).getDay();
-    let dayTwo = new Date(resultFromServer.list[16].dt * 1000).getDay();
-    let dayThree = new Date(resultFromServer.list[24].dt * 1000).getDay();
-
-    const weekday = new Array(7);
-    weekday[0] = "Sunday";
-    weekday[1] = "Monday";
-    weekday[2] = "Tuesday";
-    weekday[3] = "Wednesday";
-    weekday[4] = "Thursday";
-    weekday[5] = "Friday";
-    weekday[6] = "Saturday";
-
-    document.getElementById('weekday1').innerText = weekday[dayOne];
-    document.getElementById('weekday2').innerText = weekday[dayTwo];
-    document.getElementById('weekday3').innerText = weekday[dayThree];
-
-    let weatherIconOne = resultFromServer.list[8].weather[0].icon;
-    let weatherIconTwo = resultFromServer.list[16].weather[0].icon;
-    let weatherIconThree = resultFromServer.list[24].weather[0].icon;
-
-    document.getElementById('icon-day1').src = decideIcon(weatherIconOne);
-    document.getElementById('icon-day2').src = decideIcon(weatherIconTwo);
-    document.getElementById('icon-day3').src = decideIcon(weatherIconThree);
-
-    let descDayOne = resultFromServer.list[8].weather[0].description;
-    document.getElementById('weather-day1').innerText = descDayOne.charAt(0).toUpperCase() + descDayOne.slice(1);
-    let descDayTwo = resultFromServer.list[16].weather[0].description;
-    document.getElementById('weather-day2').innerText = descDayTwo.charAt(0).toUpperCase() + descDayTwo.slice(1);
-    let descDayThree = resultFromServer.list[24].weather[0].description;
-    document.getElementById('weather-day3').innerText = descDayThree.charAt(0).toUpperCase() + descDayThree.slice(1);
-
-    document.getElementById('degrees-day1').innerText = Math.floor(resultFromServer.list[8].main.temp);
-    document.getElementById('degrees-day2').innerText = Math.floor(resultFromServer.list[16].main.temp);
-    document.getElementById('degrees-day3').innerText = Math.floor(resultFromServer.list[24].main.temp);
+function prepareResponseWeather(weatherData) {
+    return {
+        pathIcon: pickIcon(weatherData.list[0].weather[0].icon),
+        degrees: Math.round(weatherData.list[0].main.temp),
+        humidity: weatherData.list[0].main.humidity,
+        windDirection: getWindDirection(weatherData.list[0].wind.deg),
+        windSpeed: Math.round(weatherData.list[0].wind.speed),
+        forecastWeatherThreeDays: getForecastWeatherThreeDays(weatherData)
+    };
 }
 
-function decideIcon(icon) {
-    if(icon === '01d') {return '/assets/img/sun.svg';
-        } else if(icon === '01n') {return '/assets/img/moon.svg';
-        } else if(icon === '02d') {return '/assets/img/cloud-sun.svg';
-        } else if(icon === '02n') {return '/assets/img/cloud-moon.svg';
-        } else if(icon === '03d' || icon === '03n') {return '/assets/img/cloud.svg';
-        } else if(icon === '04d' || icon === '04n') {return '/assets/img/cloud.svg';
-        } else if(icon === '09d' || icon === '09n') {return '/assets/img/rain-alt.svg';
-        } else if(icon === '10d') {return '/assets/img/rain-sun.svg';
-        } else if(icon === '10n') {return '/assets/img/rain-moon.svg';
-        } else if(icon === '11d' || icon === '11n') {return '/assets/img/lightning-rain.svg';
-        } else if(icon === '13d' || icon === '13n') {return '/assets/img/snow-alt.svg';
-        } else if(icon === '50d' || icon === '50n') {return '/assets/img/fog.svg';
-        };
+function pickIcon(iconCode) {
+    if (iconCode === '01d') {
+        return '/assets/img/sun.svg';
+    } else if (iconCode === '01n') {
+        return '/assets/img/moon.svg';
+    } else if (iconCode === '02d') {
+        return '/assets/img/cloud-sun.svg';
+    } else if (iconCode === '02n') {
+        return '/assets/img/cloud-moon.svg';
+    } else if (iconCode === '03d' || iconCode === '03n') {
+        return '/assets/img/cloud.svg';
+    } else if (iconCode === '04d' || iconCode === '04n') {
+        return '/assets/img/cloud.svg';
+    } else if (iconCode === '09d' || iconCode === '09n') {
+        return '/assets/img/rain-alt.svg';
+    } else if (iconCode === '10d') {
+        return '/assets/img/rain-sun.svg';
+    } else if (iconCode === '10n') {
+        return '/assets/img/rain-moon.svg';
+    } else if (iconCode === '11d' || iconCode === '11n') {
+        return '/assets/img/lightning-rain.svg';
+    } else if (iconCode === '13d' || iconCode === '13n') {
+        return '/assets/img/snow-alt.svg';
+    } else if (iconCode === '50d' || iconCode === '50n') {
+        return '/assets/img/fog.svg';
     }
+}
+
+function getWindDirection(windDegree) {
+    if(windDegree>=22.5 && windDegree<67.5) {
+        return 'North East';
+    } else if(windDegree>=67.5 && windDegree<112.5) {
+        return 'East';
+    } else if(windDegree>=112.5 && windDegree<157.5) {
+        return 'South East';
+    } else if(windDegree>=157.5 && windDegree<202.5) {
+        return 'South';
+    } else if(windDegree>=202.5 && windDegree<247.5) {
+        return 'South West';
+    } else if(windDegree>=247.5 && windDegree<292.5) {
+        return 'West';
+    } else if(windDegree>=292.5 && windDegree<337.5) {
+        return 'North West';
+    } else {
+        return 'North'
+    }
+}
+
+function getForecastWeatherThreeDays(weatherData) {
+    const weekDays = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+
+    const forecastWeatherFirstDay = {
+        dayName: weekDays[new Date(weatherData.list[8].dt * 1000).getDay()],
+        pathIcon: pickIcon(weatherData.list[8].weather[0].icon),
+        degrees: Math.round(weatherData.list[8].main.temp),
+        weatherDesc: weatherData.list[8].weather[0].description
+    };
+
+    const forecastWeatherSecondDay = {
+        dayName: weekDays[new Date(weatherData.list[16].dt * 1000).getDay()],
+        pathIcon: pickIcon(weatherData.list[16].weather[0].icon),
+        degrees: Math.round(weatherData.list[16].main.temp),
+        weatherDesc: weatherData.list[16].weather[0].description
+    };
+
+    const forecastWeatherThirdDay = {
+        dayName: weekDays[new Date(weatherData.list[24].dt * 1000).getDay()],
+        pathIcon: pickIcon(weatherData.list[24].weather[0].icon),
+        degrees: Math.round(weatherData.list[24].main.temp),
+        weatherDesc: weatherData.list[24].weather[0].description
+    };
+
+    return [forecastWeatherFirstDay, forecastWeatherSecondDay, forecastWeatherThirdDay];
+}
 
 module.exports.forecastWeather = forecastWeather;
-module.exports.setWeather = setWeather;

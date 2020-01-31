@@ -19,7 +19,7 @@ function setSearchBarListeners(cities) {
 			if(option.text === e.target.value) {
 				selectedOption = option;
 			}
-		})
+		});
 		let city = JSON.parse(selectedOption.getAttribute('data-city'));
 		runApiClients(city);
 	});
@@ -34,7 +34,7 @@ async function searchCities(value, cities) {
 	});
 
 	setCityOptionTags(matchCities);
-};
+}
 
 
 // show list of match cities in HTML
@@ -55,6 +55,6 @@ function setCityOptionTags(matchCities) {
 		.join('');
     document.getElementById('cityList').innerHTML = listHtml;
 	}
-};
+}
 
 module.exports = setSearchBarListeners;
