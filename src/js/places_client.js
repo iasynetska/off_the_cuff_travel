@@ -8,20 +8,22 @@ async function getSights(lat, lon){
 }
 
 function prepareResponseSights(sightsData) {
+	let sightsPlaces = sightsData.results[0].pois.filter(element => element.images.length > 0);
+	console.log(sightsPlaces);
 	return {
-		mainImageUrl: sightsData.results[0].pois[0].images[0].sizes.medium.url,
+		mainImageUrl: sightsPlaces[0].images[0].sizes.original.url,
 		places: [
 			{
-				placeName: sightsData.results[0].pois[1].name,
-				placeUrl: sightsData.results[0].pois[1].images[0].sizes.medium.url
+				placeName: sightsPlaces[1].name,
+				placeUrl: sightsPlaces[1].images[0].sizes.medium.url
 			},
 			{
-				placeName: sightsData.results[0].pois[2].name,
-				placeUrl: sightsData.results[0].pois[2].images[0].sizes.medium.url
+				placeName: sightsPlaces[2].name,
+				placeUrl: sightsPlaces[2].images[0].sizes.medium.url
 			},
 			{
-				placeName: sightsData.results[0].pois[3].name,
-				placeUrl: sightsData.results[0].pois[3].images[0].sizes.medium.url
+				placeName: sightsPlaces[3].name,
+				placeUrl: sightsPlaces[3].images[0].sizes.medium.url
 			}
 		]
 	};

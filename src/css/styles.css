@@ -52,10 +52,8 @@ h1 {
 	width: 100%;
 	height: 47vh;
 	min-height: 240px;
-	background-image: url(/assets/img/wroclaw2.jpg);
-	background-repeat: no-repeat;
-	background-size: cover;
-	background-position: center center;
+	background: #5e5e5e url(/assets/img/pegasus.jpg) no-repeat center center;
+	background-size: 100% auto;
 	border-radius: 50px;
 }
 @media screen and (max-width: 1270px) {
@@ -131,10 +129,10 @@ h1 {
 /* ===== Main city name block ===== */
 
 .city-name {
-	position: absolute;
-	top: 0px;
-	left: 45%;
-}
+	 position: absolute;
+	 top: 0px;
+	 left: 45%;
+ }
 .city-name-rel {
 	position: relative;
 	padding: 20px 60px;
@@ -142,6 +140,7 @@ h1 {
 	text-align: center;
 	background-color: white;
 }
+
 @media screen and (max-width: 1270px) {
 	.city-name {
 		left: 55%;
@@ -290,17 +289,23 @@ h1 {
 	flex: 2 2 auto;
 }
 .places-to-see-box.box1 {
+	background: #dce0eb url("/assets/img/unicorn1.jpg") no-repeat top center;
+	background-size: cover;
 	border-radius: 30px;
 	margin-right: 20px;
 	width: 100%;
 	flex: 1 1 auto;
 }
 .places-to-see-box.box2 {
+	background: #dce0eb url("/assets/img/unicorn2.jpg") no-repeat center center;
+	background-size: cover;
 	border-radius: 30px;
 	margin-bottom: 20px;
 	flex: 1 1 auto;
 }
 .places-to-see-box.box3 {
+	background: #dce0eb url("/assets/img/unicorn3.jpg") no-repeat center center;
+	background-size: cover;
 	border-radius: 30px;
 	flex: 2 2 auto;
 }
@@ -324,7 +329,7 @@ figcaption {
 	color: white;
 }
 figcaption::before {
-	content: "\f041";
+	content: "\f002";
 	font-family: "FontAwesome";
 	color: white;
 	padding-right: 15px;

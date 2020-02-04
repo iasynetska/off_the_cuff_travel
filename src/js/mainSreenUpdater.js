@@ -1,10 +1,15 @@
-
 async function updateWeather(weather) {
+    const DEGREE = '&#176;';
+    const DEGREE_CELSIUS = '&#8451;';
+    const PERCENT = '&#37;';
+
+
     document.querySelector('.bigger-icon img').src = weather.pathIcon;
-    document.getElementById('degrees').innerText = weather.degrees;
-    document.getElementById('humidity').innerText = weather.humidity;
-    document.getElementById('wind-direction').innerText = weather.windDirection;
-    document.getElementById('wind-speed').innerText = weather.windSpeed;
+    document.getElementById('degrees').innerHTML = weather.degrees;
+    document.getElementById('celsius').innerHTML = DEGREE_CELSIUS;
+    document.getElementById('humidity').innerHTML = weather.humidity + PERCENT;
+    document.getElementById('wind-direction').innerHTML = weather.windDirection;
+    document.getElementById('wind-speed').innerHTML = weather.windSpeed + ' km/h';
 
     document.getElementById('weekday1').innerText = weather.forecastWeatherThreeDays[0].dayName;
     document.getElementById('weekday2').innerText = weather.forecastWeatherThreeDays[1].dayName;
@@ -18,14 +23,14 @@ async function updateWeather(weather) {
     document.getElementById('weather-day2').innerText = weather.forecastWeatherThreeDays[1].weatherDesc.charAt(0).toUpperCase() + weather.forecastWeatherThreeDays[1].weatherDesc.slice(1);
     document.getElementById('weather-day3').innerText = weather.forecastWeatherThreeDays[2].weatherDesc.charAt(0).toUpperCase() + weather.forecastWeatherThreeDays[2].weatherDesc.slice(1);
 
-    document.getElementById('degrees-day1').innerText = weather.forecastWeatherThreeDays[0].degrees;
-    document.getElementById('degrees-day2').innerText = weather.forecastWeatherThreeDays[1].degrees;
-    document.getElementById('degrees-day3').innerText = weather.forecastWeatherThreeDays[2].degrees;
+    document.getElementById('degrees-day1').innerHTML = weather.forecastWeatherThreeDays[0].degrees + DEGREE;
+    document.getElementById('degrees-day2').innerHTML = weather.forecastWeatherThreeDays[1].degrees + DEGREE;
+    document.getElementById('degrees-day3').innerHTML = weather.forecastWeatherThreeDays[2].degrees + DEGREE;
 }
 
 async function updateAirPollution(airPollution) {
     document.getElementById('air-pollution').innerHTML = airPollution.airPoll;
-    document.getElementById('atm-pressure').innerHTML = airPollution.atmPress;
+    document.getElementById('atm-pressure').innerHTML = airPollution.atmPress + ' hPa';
     document.getElementById('harmfulness').innerHTML = airPollution.descAirPoll;
 }
 
@@ -77,12 +82,14 @@ async function updateCityAndCountry(cityName, countryName) {
 
 //update currency data
 async function updateCurrencyName(cityCurrency, cityCodeCurrency) {
+    const LEFT_PARENTHESIS = '&#40;';
+    const RIGHT_PARENTHESIS = '&#41;';
     if(cityCodeCurrency !== 'undefined') {
-        document.querySelector('.currency-name').innerText = cityCurrency;
-        document.querySelector('.currency-code').innerText = cityCodeCurrency;
+        document.querySelector('.currency-name').innerHTML = cityCurrency;
+        document.querySelector('.currency-code').innerHTML = LEFT_PARENTHESIS + cityCodeCurrency + RIGHT_PARENTHESIS;
     } else {
-        document.querySelector('.currency-name').innerText = "";
-        document.querySelector('.currency-code').innerText = "no data";
+        document.querySelector('.currency-name').innerHTML = "";
+        document.querySelector('.currency-code').innerHTML = "no data";
     }
 }
 
