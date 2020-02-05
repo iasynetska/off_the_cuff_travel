@@ -15,19 +15,17 @@
 </head>
 
 <body>
-<div class='wrapper'>
-  <div class='header'>
-    <div class='search-container'>
-      <input id="search-box" type="text" class="search-box" list="cityList" name="cityList"/>
+<div class="wrapper">
+  <div class="header">
+    <div class="header-search">
+      <input id="search-box" class="header-search__box" type="text" list="cityList" name="cityList"/>
       <datalist id="cityList"></datalist>
-        <label for="search-box"><span class="fa fa-search search-icon"></span></label>
+        <label for="search-box"><span class="fa fa-search header-search__icon"></span></label>
       <input type="submit" id="search-submit" />
     </div>
-    <div class='city-name'>
-      <div class='city-name-rel'>
-        <h1></h1>
-        <p></p>
-      </div>
+    <div class="header-text">
+        <h1 class="header-text__city"></h1>
+        <p class="header-text__country"></p>
     </div>
   </div>
 

@@ -4,7 +4,7 @@ require('regenerator-runtime');
 const runApiClients = require('./apiController.js');
 
 function setSearchBarListeners(cities) {
-	// Add listener to search-box, which found cities
+	// Add listener to header-search__box, which found cities
 	document.getElementById('search-box').addEventListener('input', (e) => {
 		if(e.target.value.length >= 3) {
 			searchCities(e.target.value, cities);			

@@ -74,8 +74,8 @@ async function updateSights(sights) {
 
 //update city name and country name
 async function updateCityAndCountry(cityName, countryName) {
-    document.querySelector('.city-name-rel h1').innerText = cityName;
-    document.querySelector('.city-name-rel p').innerText = countryName;
+    document.querySelector('.header-text__city').innerText = cityName;
+    document.querySelector('.header-text__country').innerText = countryName;
     document.getElementById('city-country').innerText = cityName;
     document.getElementById('country').innerText = countryName;
 }

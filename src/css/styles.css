@@ -2,170 +2,203 @@
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
-	border: none;
 	font-family: 'Open Sans', sans-serif;
 	color: #0F0F0F;
+	border: none;
 }
+
 html {
 	font-size: 100%;
 }
+
 h1 {
 	font-size: 2.5rem;
 	font-weight: 600;
 }
-@media screen and (max-width: 1550px) {
+
+@media only screen and (max-width: 1550px) {
 	h1.section-h1 {
 		font-size: 2rem;
 	}
 }
+
 .wrapper {
 	position: relative;
 }
-@media screen and (min-width: 1800px) {
+
+@media only screen and (min-width: 1800px) {
 	.wrapper {
 		max-width: 1760px;
-		margin: 2vh auto;
 		max-height: 1076px;
+		margin: 2vh auto;
 	}
 }
-@media screen and (min-width: 1271px) and (max-width: 1799px) {
+
+@media only screen and (min-width: 1271px) and (max-width: 1799px) {
+	.wrapper {
+		max-width: 95%;
+		max-height: 1076px;
+		margin: 2vh auto;
+	}
+}
+
+@media only screen and (min-width: 769px) and (max-width: 1270px) {
 	.wrapper {
 		max-width: 95%;
 		margin: 2vh auto;
-		max-height: 1076px;
 	}
 }
-@media screen and (min-width: 769px) and (max-width: 1270px) {
-	.wrapper {
-		max-width: 95%;
-		margin: 2vh auto;
-	}
-}
-@media screen and (max-width: 768px) {
+
+@media only screen and (max-width: 768px) {
 	.wrapper {
 		max-width: 95%;
 		margin: 1vh auto;
 	}
 }
+
 .header {
 	position: relative;
 	width: 100%;
 	height: 47vh;
 	min-height: 240px;
 	background: #5e5e5e url(/assets/img/pegasus.jpg) no-repeat center center;
-	background-size: 100% auto;
+	background-size: cover;
 	border-radius: 50px;
 }
-@media screen and (max-width: 1270px) {
+
+@media only screen and (max-width: 1270px) {
 	.header {
 		height: 35vh;
 	}
 }
 
-/* ===== Search field ===== */
+/* ===== HEADER search box ===== */
 
-.search-container {
+.header-search {
 	position: absolute;
 	top: 40px;
 	left: 40px;
 	width: 20%;
 	height: 53px;
 }
-@media screen and (max-width: 1270px) {
-	.search-container {
+
+@media only screen and (max-width: 1270px) {
+	.header-search {
 		width: 35%;
 	}
 }
-@media screen and (max-width: 760px) {
-	.search-container {
+
+@media only screen and (max-width: 760px) {
+	.header-search {
 		width: 80%;
 	}
 }
-.search-box {
-	transition: width 0.6s, border-radius 0.6s, box-shadow 0.6s;
+
+.header-search__box {
 	width: 53px;
 	height: 53px;
-	border-radius: 30px;
-	border: none;
-	cursor: pointer;
 	background-color: rgb(235, 235, 235);
+	border: none;
+	border-radius: 30px;
+	cursor: pointer;
+	transition: width 0.6s, border-radius 0.6s, box-shadow 0.6s;
 }
-.search-box.search-icon {
-	color: black
+
+.header-search__box.header-search__icon {
+	color: black;
 }
-.search-box:hover {
+
+.header-search__box:hover {
     color: white;
     box-shadow: 0 0 0 5px rgb(61, 71, 82);
 }
 
-.search-box:focus {
-    transition: width 0.6s, border-radius 0.6s;
+.header-search__box:focus {
+	width: 90%;
+	padding-left: 15px;
+	color: black;
     border: none;
+	border-radius: auto;
+	box-shadow: none;
+	transition: width 0.6s, border-radius 0.6s;
     outline: none;
-    box-shadow: none;
-    padding-left: 15px;
     cursor: text;
-    width: 90%;
-    border-radius: auto;
-    color: black;
 }
-.search-box:not(:focus) {
+
+.header-search__box:not(:focus) {
 	text-indent: -5000px;  /* for no text input on falling back */
 }
+
 #search-box::-webkit-calendar-picker-indicator {
 	display: none;
 }
+
 #search-submit {
 	position: relative;
 	left: -5000px;
 }
-.search-icon {
+
+.header-search__icon {
 	position: relative;
 	left: -37px;
 	color: #0F0F0F;
 	cursor: pointer;
 }
 
-/* ===== Main city name block ===== */
+/* ===== HEADER text ===== */
 
-.city-name {
-	 position: absolute;
-	 top: 0px;
-	 left: 45%;
- }
-.city-name-rel {
-	position: relative;
+.header-text {
+	position: absolute;
+	top: 0;
+	left: 50%;
+	margin-left: -140px;
 	padding: 20px 60px;
-	border-radius: 0 0 30px 30px;
 	text-align: center;
 	background-color: white;
+	border-radius: 0 0 30px 30px;
 }
 
-@media screen and (max-width: 1270px) {
-	.city-name {
+@media only screen and (max-width: 1270px) {
+	.header-text {
 		left: 55%;
 	}
 }
-@media screen and (max-width: 950px) {
-	.city-name {
-		top: auto;
-		left: 50%;
-		bottom: 0px;
+
+@media only screen and (max-width : 992px) {
+	.header-text {
+		padding: 15px 50px;
 	}
-	.city-name-rel {
+}
+
+@media only screen and (max-width : 768px) {
+	.header-text {
+		top: auto;
+		bottom: 0;
+		left: 50%;
+		margin-left: -100px;
+		padding: 10px 40px;
 		border-radius: 30px 30px 0 0;
 	}
-	.city-name-rel {
-		left: -50%;
+
+	.header-text__city {
+		font-size: 1.75rem;
+	}
+
+	.header-text__country {
+		font-size: 1rem;
+		line-height: 1.5;
 	}
 }
-.city-name h1 {
+
+.header-text__city {
 	line-height: 1.2;
 }
-.city-name p {
+
+.header-text__country {
 	font-size: 1.25rem;
 	line-height: 1.7;
 }
+
 .bottom-boxes {
 	display: flex;
 }

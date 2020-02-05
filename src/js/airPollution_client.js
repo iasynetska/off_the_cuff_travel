@@ -35,7 +35,7 @@ function getDescAirPollution(airPoll){
 
 function lackData() {
 	return  {
-		airPoll: 'no data',
+		airPoll: '',
 		descAirPoll: 'no data',
 		atmPress: 'no data'
 	};
