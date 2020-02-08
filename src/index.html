@@ -20,84 +20,74 @@
     <div class="header-search">
       <input id="search-box" class="header-search__box" type="text" list="cityList" name="cityList"/>
       <datalist id="cityList"></datalist>
-        <label for="search-box"><span class="fa fa-search header-search__icon"></span></label>
+      <label for="search-box"><span class="fa fa-search header-search__icon"></span></label>
       <input type="submit" id="search-submit" />
     </div>
     <div class="header-text">
-        <h1 class="header-text__city"></h1>
-        <p class="header-text__country"></p>
+      <h1 class="header-text__city"></h1>
+      <p class="header-text__country"></p>
     </div>
   </div>
 
-  <div class='bottom-boxes'>
+  <div class='main'>
     <!-- ===== 3 day forecast column ===== -->
-    <div class='three-forecast'>
-
-      <div class='title-space'></div>
-      <h1 class='section-h1'>3 Day <span>Forecast</span></h1>
-      <div class='title-space'></div>
+    <section class='forecast section'>
+      <h1 class='section-title'>3 Day <span>Forecast</span></h1>
 
       <!-- ===== 3 day forecast - box 1 ===== -->
-      <div class='forecast-box'>
-        <div class='forecast-icon'>
+      <div class='forecast-block'>
+        <div class='forecast-block__icon'>
+          <img id= "icon-day1" src='/assets/img/thermometer.svg' />
+        </div>
+        <div class='forecast-block__desc'>
           <div>
-            <img id= "icon-day1" src='/assets/img/thermometer.svg' />
+            <div id="name-day1" class="desc-day"></div>
+            <div id="weather-day1"></div>
           </div>
         </div>
-        <div class='forecast-day'>
-          <div>
-            <p><span id="weekday1"></span></p>
-            <p id="weather-day1"></p>
-          </div>
-        </div>
-        <div class='forecast-temp-box'>
-            <p><span id="degrees-day1"></span></p>
+        <div class='forecast-block__degrees'>
+          <div id="degrees-day1"></div>
         </div>
       </div>
 
       <!-- ===== 3 day forecast - box 2 ===== -->
-      <div class='forecast-box'>
-        <div class='forecast-icon'>
+      <div class='forecast-block'>
+        <div class='forecast-block__icon'>
+          <img id= "icon-day2" src='/assets/img/thermometer.svg' />
+        </div>
+        <div class='forecast-block__desc'>
           <div>
-            <img id= "icon-day2" src='/assets/img/thermometer.svg' />
+            <div id="name-day2" class="desc-day"></div>
+            <div id="weather-day2"></div>
           </div>
         </div>
-        <div class='forecast-day'>
-            <div>
-            <p><span id="weekday2"></span></p>
-            <p id="weather-day2"></p>
-            </div>
-        </div>
-        <div class='forecast-temp-box'>
-            <p><span id="degrees-day2"></span></p>
+        <div class='forecast-block__degrees'>
+          <div id="degrees-day2"></div>
         </div>
       </div>
 
       <!-- ===== 3 day forecast - box 3 ===== -->
-      <div class='forecast-box'>
-        <div class='forecast-icon'>
+      <div class='forecast-block'>
+        <div class='forecast-block__icon'>
+          <img id= "icon-day3" src='/assets/img/thermometer.svg' />
+        </div>
+        <div class='forecast-block__desc'>
           <div>
-            <img id= "icon-day3" src='/assets/img/thermometer.svg' />
+            <div id="name-day3" class="desc-day"></div>
+            <div id="weather-day3"></div>
           </div>
         </div>
-        <div class='forecast-day'>
-            <div>
-            <p><span id="weekday3"></span></p>
-            <p id="weather-day3"></p>
-            </div>
-        </div>
-        <div class='forecast-temp-box'>
-            <p><span id="degrees-day3"></span></p>
+        <div class='forecast-block__degrees'>
+          <div id="degrees-day3"></div>
         </div>
       </div>
-
-    </div>
+    </section>
 
     <!-- ===== Places to see column ===== -->
-    <div class='places-to-see'>
+    <div class='places-to-see section'>
 
       <div class='title-space'></div>
-      <h1 class='section-h1'>Places <span>To See</span></h1>
+      <h1 class='section-title'>Places <span>To See</span></h1>
       <div class='title-space'></div>
 
       <div class='pts-wrapper1'>
@@ -124,21 +114,21 @@
           </div>
         </div>
         <div class='bigger-box-temp'>
-            <p><span id="degrees"></span><sup id="celsius"></sup></p>
+          <p><span id="degrees"></span><sup id="celsius"></sup></p>
         </div>
         <div class='bigger-box-city'>
-            <p ><span id="city-country"></span><br/><span id="country"></span>
-            </p>
+          <p ><span id="city-country"></span><br/><span id="country"></span>
+          </p>
         </div>
-          <div class='bigger-box-lower-row'>
-            <p>Humidity: <span id="humidity"></span></p>
-          </div>
-          <div class='bigger-box-lower-row middle'>
-            <p id="wind-direction"></p>
-          </div>
-          <div class='bigger-box-lower-row'>
-            <p><span id="wind-speed"></span></p>
-          </div>
+        <div class='bigger-box-lower-row'>
+          <p>Humidity: <span id="humidity"></span></p>
+        </div>
+        <div class='bigger-box-lower-row middle'>
+          <p id="wind-direction"></p>
+        </div>
+        <div class='bigger-box-lower-row'>
+          <p><span id="wind-speed"></span></p>
+        </div>
       </div>
 
       <!-- ===== Pollution box ===== -->
@@ -149,13 +139,13 @@
           </div>
         </div>
         <div class='bigger-box-pollution'>
-            <p><span id="harmfulness"></span><br/>
+          <p><span id="harmfulness"></span><br/>
             Current Air Quality Index<br/>
             <sub>Based on US EPA standard</sub></p>
         </div>
-          <div class='bigger-box-pollution-lower row2 middle'>
-            <p>Atmospheric Pressure: <span id="atm-pressure"></span></p>
-          </div>
+        <div class='bigger-box-pollution-lower row2 middle'>
+          <p>Atmospheric Pressure: <span id="atm-pressure"></span></p>
+        </div>
       </div>
 
       <!-- ===== Currency box ===== -->
@@ -164,7 +154,7 @@
           <img src='/assets/img/money.svg' />
         </div>
         <div class='information-currency__data smaller-box-text'>
-            <p><span class="currency-name"></span>&nbsp;<span class="currency-code"></span></p>
+          <p><span class="currency-name"></span>&nbsp;<span class="currency-code"></span></p>
         </div>
       </div>
 

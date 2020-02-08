@@ -17,7 +17,7 @@ h1 {
 }
 
 @media only screen and (max-width: 1550px) {
-	h1.section-h1 {
+	h1.section-title {
 		font-size: 2rem;
 	}
 }
@@ -109,20 +109,20 @@ h1 {
 }
 
 .header-search__box:hover {
-    color: white;
-    box-shadow: 0 0 0 5px rgb(61, 71, 82);
+	color: white;
+	box-shadow: 0 0 0 5px rgb(61, 71, 82);
 }
 
 .header-search__box:focus {
 	width: 90%;
 	padding-left: 15px;
 	color: black;
-    border: none;
+	border: none;
 	border-radius: auto;
 	box-shadow: none;
 	transition: width 0.6s, border-radius 0.6s;
-    outline: none;
-    cursor: text;
+	outline: none;
+	cursor: text;
 }
 
 .header-search__box:not(:focus) {
@@ -199,13 +199,23 @@ h1 {
 	line-height: 1.7;
 }
 
-.bottom-boxes {
+.main {
 	display: flex;
+}
+
+.section-title {
+	margin-left: 20px;
+	margin-top: 15px;
+	margin-bottom: 15px;
+}
+
+.section-title span {
+	font-weight: 300;
 }
 
 /* ===== 3 day forecast column ===== */
 
-.three-forecast {
+.forecast {
 	display: flex;
 	flex-direction: column;
 	flex-wrap: nowrap;
@@ -213,77 +223,99 @@ h1 {
 	height: 48vh;
 	margin-left: 40px;
 }
-.title-space {
-	height: 43px;
-	min-height: 3vh;
-}
-.three-forecast h1 {
-	margin: 0 auto 0 20px;
-}
-.three-forecast h1 span, .places-to-see h1 span {
-	font-weight: 300;
-}
-.forecast-box {
+
+.forecast-block {
 	display: flex;
 	align-items: stretch;
 	width: 100%;
 	height: 100px;
 	min-height: 80px;
-	filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
 	margin-bottom: 20px;
 	background-color: white;
 	border-radius: 30px;
+	filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
 }
-.forecast-box:last-of-type {
+
+.forecast-block:last-of-type {
 	margin-bottom: 0;
 }
-.forecast-icon {
+
+.forecast-block__icon {
 	flex: 1;
 	display: flex;
 	align-items: center;
 	justify-content: center;
 	padding: 10px;
 }
-.forecast-icon img {
+
+.forecast-block__icon img {
 	width: 40px;
 	height: 40px;
 }
-.forecast-day {
+
+.forecast-block__desc {
 	flex: 2;
 	display: flex;
 	align-items: center;
-	text-align: left;
-	font-size: 1rem;
+	justify-content: left;
 	padding: 10px;
+	font-size: 1rem;
 }
-.forecast-day p span{
+
+.desc-day{
 	font-weight: bold;
 }
-.forecast-temp-box p, .bigger-box-temp p, .bigger-box-temp p sup, .pollution-value p {
+
+.bigger-box-temp p, .bigger-box-temp p sup, .pollution-value p {
 	font-family: 'Open Sans Condensed', sans-serif;
 	font-weight: 600;
 }
-.forecast-temp-box {
+
+.forecast-block__degrees {
 	flex: 2;
 	display: flex;
 	align-items: center;
 	justify-content: center;
 	width: 127px;
+	font-size: 1.563rem;
+	font-family: 'Open Sans Condensed', sans-serif;
+	font-weight: 600;
 	background-color: #DCE0EB;
 	border-radius: 0 30px 30px 0;
-	font-size: 1.563rem;
-	text-align: center;
 }
+
 @media screen and (min-width: 768px) and (max-width: 1270px) {
-	.three-forecast {
+	.forecast {
 		flex: 1 1 35%;
 		margin-left: 0;
 	}
+
+	.section {
+		height: 100%;
+	}
+
+	.section-title {
+		margin-top: 10px;
+	}
 }
+
 @media screen and (max-width: 767px) {
-	.three-forecast {
+	.forecast {
 		flex: 1 1 100%;
 		margin-left: 0;
+	}
+
+	.section {
+		margin-bottom: 16px;
+		height: 100%;
+	}
+
+	.section-title {
+		margin-top: 10px;
+	}
+
+	.forecast-block {
+		height: 80px;
 	}
 }
 
@@ -571,7 +603,7 @@ figcaption::before {
 }
 
 @media screen and (min-width: 768px) and (max-width: 1270px) {
-	.bottom-boxes {
+	.main {
 		flex-wrap: wrap;
 	}
 	.weather-pollution-column {
@@ -597,7 +629,7 @@ figcaption::before {
 	}
 }
 @media screen and (max-width: 767px) {
-	.bottom-boxes {
+	.main {
 		flex-wrap: wrap;
 	}
 	.weather-pollution-column {

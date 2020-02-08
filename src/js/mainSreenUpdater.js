@@ -11,9 +11,9 @@ async function updateWeather(weather) {
     document.getElementById('wind-direction').innerHTML = weather.windDirection;
     document.getElementById('wind-speed').innerHTML = weather.windSpeed + ' km/h';
 
-    document.getElementById('weekday1').innerText = weather.forecastWeatherThreeDays[0].dayName;
-    document.getElementById('weekday2').innerText = weather.forecastWeatherThreeDays[1].dayName;
-    document.getElementById('weekday3').innerText = weather.forecastWeatherThreeDays[2].dayName;
+    document.getElementById('name-day1').innerText = weather.forecastWeatherThreeDays[0].dayName;
+    document.getElementById('name-day2').innerText = weather.forecastWeatherThreeDays[1].dayName;
+    document.getElementById('name-day3').innerText = weather.forecastWeatherThreeDays[2].dayName;
 
     document.getElementById('icon-day1').src = weather.forecastWeatherThreeDays[0].pathIcon;
     document.getElementById('icon-day2').src = weather.forecastWeatherThreeDays[1].pathIcon;
