@@ -2,7 +2,7 @@
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
-	font-family: 'Open Sans', sans-serif;
+	font-family: "Open Sans", sans-serif;
 	color: #0F0F0F;
 	border: none;
 }
@@ -61,7 +61,7 @@ h1 {
 	width: 100%;
 	height: 47vh;
 	min-height: 240px;
-	background: #5e5e5e url(/assets/img/pegasus.jpg) no-repeat center center;
+	background: #5e5e5e url('/assets/img/pegasus.jpg') no-repeat center center;
 	background-size: cover;
 	border-radius: 50px;
 }
@@ -291,7 +291,7 @@ h1 {
 	}
 
 	.section {
-		height: 100%;
+		height: auto;
 	}
 
 	.section-title {
@@ -307,7 +307,7 @@ h1 {
 
 	.section {
 		margin-bottom: 16px;
-		height: 100%;
+		height: auto;
 	}
 
 	.section-title {
@@ -321,101 +321,121 @@ h1 {
 
 /* ===== Places to see column ===== */
 
-.places-to-see {
+.sights {
 	display: flex;
 	flex-direction: column;
 	flex-wrap: nowrap;
-	height: 48vh;
 	width: 30%;
-	margin-left: 4vw;
+	height: 48vh;
 	margin-right: 4vw;
+	margin-left: 4vw;
 }
-.pts-wrapper1 {
+
+.sights-blocks {
 	display: flex;
+	justify-content: space-between;
 	height: 340px;
 	min-height: 280px;
 }
-.pts-wrapper1 a.change-wrapper {
-	display: flex;
-	min-height: 280px;
-	width: 100%;
-}
-.pts-wrapper2 {
+
+.sights-wrapper {
 	display: flex;
 	flex-direction: column;
-	width: 100%;
+	width: calc(50% - 10px);
 }
-.pts-wrapper2 a.change-wrapper2 {
-	display: flex;
+
+.sight_big,
+.sight_small {
 	flex: 1 1 auto;
 }
-.pts-wrapper2 a.change-wrapper3 {
-	display: flex;
-	flex: 2 2 auto;
-}
-.places-to-see-box.box1 {
-	background: #dce0eb url("/assets/img/unicorn1.jpg") no-repeat top center;
-	background-size: cover;
-	border-radius: 30px;
-	margin-right: 20px;
-	width: 100%;
-	flex: 1 1 auto;
-}
-.places-to-see-box.box2 {
-	background: #dce0eb url("/assets/img/unicorn2.jpg") no-repeat center center;
-	background-size: cover;
-	border-radius: 30px;
-	margin-bottom: 20px;
-	flex: 1 1 auto;
-}
-.places-to-see-box.box3 {
-	background: #dce0eb url("/assets/img/unicorn3.jpg") no-repeat center center;
-	background-size: cover;
-	border-radius: 30px;
-	flex: 2 2 auto;
-}
-.places-to-see-box {
-	background-repeat: no-repeat;
-	background-size: cover;
-	background-position: center center;
-	filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
-}
-figure {
-	width: 100%;
+
+.sights-block {
 	position: relative;
 	display: flex;
+	cursor: pointer;
+}
+
+.sight1-block {
+	background: #dce0eb url("/assets/img/unicorn1.jpg") no-repeat top center;
+}
+
+.sight2-block {
+	background: #dce0eb url("/assets/img/unicorn2.jpg") no-repeat center center;
+	margin-bottom: 20px;
+}
+
+.sight3-block {
+	background: #dce0eb url("/assets/img/unicorn3.jpg") no-repeat center center;
+}
+
+.sights-block__photo {
 	flex: 1 1 auto;
+	background-size: cover;
+	border-radius: 30px;
+	filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.161));
 }
-figcaption {
+
+.sights-block__title{
 	position: absolute;
-	top: 15px;
-	left: 20px;
-	max-width: 70%;
+	top: 25px;
+	display: -webkit-box;
+	-webkit-line-clamp: 1;
+	-webkit-box-orient: vertical;
+	overflow: hidden;
+	padding: 5px 10px;
 	color: white;
+	background-color: rgba(94, 94, 94, 0.6);
+	border-radius: 0 10px 10px 0;
 }
-figcaption::before {
-	content: "\f002";
-	font-family: "FontAwesome";
+
+.sights-block__title a {
 	color: white;
+	text-decoration: none;
+}
+
+.sights-block__title::before {
 	padding-right: 15px;
 	font-size: 1.125rem;
+	font-family: "FontAwesome";
+	content: "\f002";
+	color: white;
 	text-shadow: none;
 }
+
 @media screen and (min-width: 768px) and (max-width: 1270px) {
-	.places-to-see {
+	.sights {
 		flex: 1 1 59%;
+		margin-right: 0;
 		margin-left: 2vw;
-		margin-right: 0;
-	}
-}
-@media screen and (max-width: 767px) {
-	.places-to-see {
-		flex: 1 1 100%;
-		margin-left: 0;
-		margin-right: 0;
 	}
 }
 
+@media screen and (max-width: 767px) {
+	.sights {
+		flex: 1 1 100%;
+		margin-right: 0;
+		margin-left: 0;
+	}
+}
+
+@media only screen and (max-width : 480px) {
+	.sights-blocks {
+		flex-direction: column;
+	}
+
+	.sights-wrapper {
+		width: 100%;
+	}
+
+	.sight2-block {
+		margin-bottom: 0;
+	}
+
+	.sights-block {
+		height: 320px;
+		margin-bottom: 20px;
+	}
+}
 /* ===== Weather-pollution column ===== */
 
 .weather-pollution-column {
@@ -423,7 +443,7 @@ figcaption::before {
 	flex-direction: column;
 	flex-wrap: nowrap;
 	position: absolute;
-	bottom: 0px;
+	bottom: 0;
 	right: 60px;
 	width: 33%;
 }
@@ -483,7 +503,7 @@ figcaption::before {
 .bigger-box-city p::before {
 	content: "";
 	position: absolute;
-	left: 0px;
+	left: 0;
 	width: 1px;
 	height: 45%;
 	background-color: #707070;

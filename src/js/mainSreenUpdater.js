@@ -37,39 +37,21 @@ async function updateAirPollution(airPollution) {
 async function updateSights(sights) {
     document.querySelector('.header').style.backgroundImage = `url("${sights.mainImageUrl}")`;
 
-    document.querySelector('.places-to-see-box.box1').style.backgroundImage = `url("${sights.places[0].placeUrl}")`;
-    document.querySelector('.places-to-see-box.box2').style.backgroundImage = `url("${sights.places[1].placeUrl}")`;
-    document.querySelector('.places-to-see-box.box3').style.backgroundImage = `url("${sights.places[2].placeUrl}")`;
+    document.querySelector('.sight1-block').style.backgroundImage = `url("${sights.places[0].placeUrl}")`;
+    document.querySelector('.sight2-block').style.backgroundImage = `url("${sights.places[1].placeUrl}")`;
+    document.querySelector('.sight3-block').style.backgroundImage = `url("${sights.places[2].placeUrl}")`;
 
-    let image1 = document.querySelector('.places-to-see-box.box1');
-    let wrapper1 = document.createElement('a');
-    wrapper1.setAttribute('href', `http://www.google.com/search?q=${sights.places[0].placeName}`);
-    wrapper1.setAttribute('target', '_blank');
-    wrapper1.setAttribute('class', 'change-wrapper');
-    wrapper1.appendChild(image1.cloneNode(true));
-    image1.parentNode.replaceChild(wrapper1, image1);
-    let caption1 = document.querySelector('.fig1');
-    caption1.innerHTML = sights.places[0].placeName;
+    document.querySelector('.sight1')
+        .setAttribute('onclick', `window.open("http://www.google.com/search?q=${sights.places[0].placeName}")`);
+    document.querySelector('.sight1-caption').innerHTML = sights.places[0].placeName;
 
-    let image2 = document.querySelector('.places-to-see-box.box2');
-    let wrapper2 = document.createElement('a');
-    wrapper2.setAttribute('href', `http://www.google.com/search?q=${sights.places[1].placeName}`);
-    wrapper1.setAttribute('target', '_blank');
-    wrapper2.setAttribute('class', 'change-wrapper2');
-    wrapper2.appendChild(image2.cloneNode(true));
-    image2.parentNode.replaceChild(wrapper2, image2);
-    let caption2 = document.querySelector('.fig2');
-    caption2.innerHTML = sights.places[1].placeName;
+    document.querySelector('.sight2')
+        .setAttribute('onclick', `window.open("http://www.google.com/search?q=${sights.places[1].placeName}")`);
+    document.querySelector('.sight2-caption').innerHTML = sights.places[1].placeName;
 
-    let image3 = document.querySelector('.places-to-see-box.box3');
-    let wrapper3 = document.createElement('a');
-    wrapper3.setAttribute('href', `http://www.google.com/search?q=${sights.places[2].placeName}`);
-    wrapper1.setAttribute('target', '_blank');
-    wrapper3.setAttribute('class', 'change-wrapper3');
-    wrapper3.appendChild(image3.cloneNode(true));
-    image3.parentNode.replaceChild(wrapper3, image3);
-    let caption3 = document.querySelector('.fig3');
-    caption3.innerHTML = sights.places[2].placeName;
+    document.querySelector('.sight3')
+        .setAttribute('onclick', `window.open("http://www.google.com/search?q=${sights.places[2].placeName}")`);
+    document.querySelector('.sight3-caption').innerHTML = sights.places[2].placeName;
 }
 
 //update city name and country name

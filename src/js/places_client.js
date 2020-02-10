@@ -1,8 +1,8 @@
-const apiToken = 'd3e7use8ge18l28twgh3dnsxtn24jwwu';
-const accountId = '6HWC7RRK';
+const API_TOKEN = 'd3e7use8ge18l28twgh3dnsxtn24jwwu';
+const ACCOUNT_ID = '6HWC7RRK';
 
 async function getSights(lat, lon){
-	return await fetch(`https://www.triposo.com/api/20190906/local_highlights.json?tag_labels=sightseeing&poi_fields=name,images,location_id&max_distance=20000&latitude=${lat}&longitude=${lon}&account=${accountId}&token=${apiToken}`)
+	return await fetch(`https://www.triposo.com/api/20190906/local_highlights.json?tag_labels=sightseeing&poi_fields=name,images,location_id&max_distance=20000&latitude=${lat}&longitude=${lon}&account=${ACCOUNT_ID}&token=${API_TOKEN}`)
 		.then(res => res.json())
 		.then((json) => prepareResponseSights(json));
 }

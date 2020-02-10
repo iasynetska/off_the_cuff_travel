@@ -9,6 +9,7 @@
   <meta name="description" content="Everything you need to know before stepping out the door.">
   <meta name="keywords" content="travel, weather, air quality, air pollution, currency">
   <title>off the cuff travel</title>
+  <link rel="shortcut icon" href="#" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:700&display=swap&subset=latin-ext" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700&display=swap" rel="stylesheet">
@@ -29,141 +30,145 @@
     </div>
   </div>
 
-  <div class='main'>
+  <div class="main">
     <!-- ===== 3 day forecast column ===== -->
-    <section class='forecast section'>
-      <h1 class='section-title'>3 Day <span>Forecast</span></h1>
+    <section class="section forecast">
+      <h1 class="section-title">3 Day <span>Forecast</span></h1>
 
       <!-- ===== 3 day forecast - box 1 ===== -->
-      <div class='forecast-block'>
-        <div class='forecast-block__icon'>
-          <img id= "icon-day1" src='/assets/img/thermometer.svg' />
+      <div class="forecast-block">
+        <div class="forecast-block__icon">
+          <img id= "icon-day1" src="/assets/img/thermometer.svg" />
         </div>
-        <div class='forecast-block__desc'>
+        <div class="forecast-block__desc">
           <div>
             <div id="name-day1" class="desc-day"></div>
             <div id="weather-day1"></div>
           </div>
         </div>
-        <div class='forecast-block__degrees'>
+        <div class="forecast-block__degrees">
           <div id="degrees-day1"></div>
         </div>
       </div>
 
       <!-- ===== 3 day forecast - box 2 ===== -->
-      <div class='forecast-block'>
-        <div class='forecast-block__icon'>
-          <img id= "icon-day2" src='/assets/img/thermometer.svg' />
+      <div class="forecast-block">
+        <div class="forecast-block__icon">
+          <img id= "icon-day2" src="/assets/img/thermometer.svg" />
         </div>
-        <div class='forecast-block__desc'>
+        <div class="forecast-block__desc">
           <div>
             <div id="name-day2" class="desc-day"></div>
             <div id="weather-day2"></div>
           </div>
         </div>
-        <div class='forecast-block__degrees'>
+        <div class="forecast-block__degrees">
           <div id="degrees-day2"></div>
         </div>
       </div>
 
       <!-- ===== 3 day forecast - box 3 ===== -->
-      <div class='forecast-block'>
-        <div class='forecast-block__icon'>
-          <img id= "icon-day3" src='/assets/img/thermometer.svg' />
+      <div class="forecast-block">
+        <div class="forecast-block__icon">
+          <img id= "icon-day3" src="/assets/img/thermometer.svg" />
         </div>
-        <div class='forecast-block__desc'>
+        <div class="forecast-block__desc">
           <div>
             <div id="name-day3" class="desc-day"></div>
             <div id="weather-day3"></div>
           </div>
         </div>
-        <div class='forecast-block__degrees'>
+        <div class="forecast-block__degrees">
           <div id="degrees-day3"></div>
         </div>
       </div>
     </section>
 
     <!-- ===== Places to see column ===== -->
-    <div class='places-to-see section'>
+    <section class="section sights">
+      <h1 class="section-title">Places <span>To See</span></h1>
 
-      <div class='title-space'></div>
-      <h1 class='section-title'>Places <span>To See</span></h1>
-      <div class='title-space'></div>
-
-      <div class='pts-wrapper1'>
-        <!-- ===== Places to see - box 1 ===== -->
-        <figure><div class='places-to-see-box box1'></div><figcaption class='fig1'></figcaption></figure>
-
-        <div class='pts-wrapper2'>
-          <figure><div class='places-to-see-box box2'></div><figcaption class='fig2'></figcaption></figure>
-          <figure><div class='places-to-see-box box3'></div><figcaption class='fig3'></figcaption></figure>
+      <div class="sights-blocks">
+        <div class="sights-wrapper">
+          <figure class="sights-block sight_big sight1">
+            <div class="sights-block__photo sight1-block"></div>
+            <figcaption class="sights-block__title sight1-caption"></figcaption>
+          </figure>
         </div>
-
+        <div class="sights-wrapper">
+          <figure class="sights-block sight_small sight2">
+            <div class="sights-block__photo sight2-block"></div>
+            <figcaption class="sights-block__title sight2-caption"></figcaption>
+          </figure>
+          <figure class="sights-block sight_small sight3">
+            <div class="sights-block__photo sight3-block"></div>
+            <figcaption class="sights-block__title sight3-caption"></figcaption>
+          </figure>
+        </div>
       </div>
-
-    </div>
+    </section>
 
     <!-- ===== Weather-pollution column ===== -->
-    <div class='information weather-pollution-column'>
+    <div class="information weather-pollution-column">
 
       <!-- ===== Current weather box ===== -->
-      <div class='information-weather bigger-box'>
-        <div class='bigger-icon'>
+      <div class="information-weather bigger-box">
+        <div class="bigger-icon">
           <div>
-            <img src='/assets/img/thermometer.svg' />
+            <img src="/assets/img/thermometer.svg" />
           </div>
         </div>
-        <div class='bigger-box-temp'>
+        <div class="bigger-box-temp">
           <p><span id="degrees"></span><sup id="celsius"></sup></p>
         </div>
-        <div class='bigger-box-city'>
+        <div class="bigger-box-city">
           <p ><span id="city-country"></span><br/><span id="country"></span>
           </p>
         </div>
-        <div class='bigger-box-lower-row'>
+        <div class="bigger-box-lower-row">
           <p>Humidity: <span id="humidity"></span></p>
         </div>
-        <div class='bigger-box-lower-row middle'>
+        <div class="bigger-box-lower-row middle">
           <p id="wind-direction"></p>
         </div>
-        <div class='bigger-box-lower-row'>
+        <div class="bigger-box-lower-row">
           <p><span id="wind-speed"></span></p>
         </div>
       </div>
 
       <!-- ===== Pollution box ===== -->
-      <div class='information-weather bigger-box'>
-        <div class='pollution-value'>
+      <div class="information-weather bigger-box">
+        <div class="pollution-value">
           <div>
             <p id="air-pollution"></p>
           </div>
         </div>
-        <div class='bigger-box-pollution'>
+        <div class="bigger-box-pollution">
           <p><span id="harmfulness"></span><br/>
             Current Air Quality Index<br/>
             <sub>Based on US EPA standard</sub></p>
         </div>
-        <div class='bigger-box-pollution-lower row2 middle'>
+        <div class="bigger-box-pollution-lower row2 middle">
           <p>Atmospheric Pressure: <span id="atm-pressure"></span></p>
         </div>
       </div>
 
       <!-- ===== Currency box ===== -->
-      <div class='information-currency smaller-box'>
-        <div class='information-currency__icon smaller-icon'>
-          <img src='/assets/img/money.svg' />
+      <div class="information-currency smaller-box">
+        <div class="information-currency__icon smaller-icon">
+          <img src="/assets/img/money.svg" />
         </div>
-        <div class='information-currency__data smaller-box-text'>
+        <div class="information-currency__data smaller-box-text">
           <p><span class="currency-name"></span>&nbsp;<span class="currency-code"></span></p>
         </div>
       </div>
 
       <!-- ===== Flag box ===== -->
-      <div class='information-flag smaller-box'>
-        <div class='information-flag__icon smaller-icon'>
-          <img src='/assets/img/flag.svg' />
+      <div class="information-flag smaller-box">
+        <div class="information-flag__icon smaller-icon">
+          <img src="/assets/img/flag.svg" />
         </div>
-        <div class='information-flag__data smaller-box-text'>
+        <div class="information-flag__data smaller-box-text">
         </div>
       </div>
 

@@ -1,8 +1,8 @@
 const vsprintf = require('sprintf-js').vsprintf;
-const key = 'e3611d69-4a6a-4ea3-9dc7-d5ed3c21b0be';
+const KEY = 'e3611d69-4a6a-4ea3-9dc7-d5ed3c21b0be';
 
 async function getAirPollution(lat, lon){
-	return await fetch(vsprintf('https://api.airvisual.com/v2/nearest_city?lat=%s&lon=%s&key=%s', [lat, lon, key]))
+	return await fetch(vsprintf('https://api.airvisual.com/v2/nearest_city?lat=%s&lon=%s&key=%s', [lat, lon, KEY]))
 		.then(response => response.json())
 		.then((json) => prepareResponseAirPollution(json));
 }

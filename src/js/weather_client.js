@@ -1,8 +1,8 @@
-const appId = 'ace7f80e9d662f6d6fbf5503dcf9bdf6';
-let units = 'metric';
+const APP_ID = 'ace7f80e9d662f6d6fbf5503dcf9bdf6';
+let UNITS = 'metric';
 
 async function forecastWeather(city) {
-    return await fetch(`http://api.openweathermap.org/data/2.5/forecast?lat=${city.lat}&lon=${city.lon}&APPID=${appId}&units=${units}`)
+    return await fetch(`http://api.openweathermap.org/data/2.5/forecast?lat=${city.lat}&lon=${city.lon}&APPID=${APP_ID}&units=${UNITS}`)
     .then(response => response.json())
     .then((json) => prepareResponseWeather(json));
 }
