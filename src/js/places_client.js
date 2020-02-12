@@ -31,19 +31,19 @@ function prepareResponseSights(sightsData) {
 
 let lackData = function() {
 	return {
-		mainImageUrl: '/assets/img/pegasus.jpg',
+		mainImageUrl: 'assets/img/pegasus.jpg',
 		places: [
 			{
 				placeName: '',
-				placeUrl: '/assets/img/unicorn1.jpg'
+				placeUrl: 'assets/img/unicorn1.jpg'
 			},
 			{
 				placeName: '',
-				placeUrl: '/assets/img/unicorn2.jpg'
+				placeUrl: 'assets/img/unicorn2.jpg'
 			},
 			{
 				placeName: '',
-				placeUrl: '/assets/img/unicorn3.jpg'
+				placeUrl: 'assets/img/unicorn3.jpg'
 			}
 		]
 	};

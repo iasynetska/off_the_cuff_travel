@@ -20,29 +20,29 @@ function prepareResponseWeather(weatherData) {
 
 function pickIcon(iconCode) {
     if (iconCode === '01d') {
-        return '/assets/img/sun.svg';
+        return 'assets/img/sun.svg';
     } else if (iconCode === '01n') {
-        return '/assets/img/moon.svg';
+        return 'assets/img/moon.svg';
     } else if (iconCode === '02d') {
-        return '/assets/img/cloud-sun.svg';
+        return 'assets/img/cloud-sun.svg';
     } else if (iconCode === '02n') {
-        return '/assets/img/cloud-moon.svg';
+        return 'assets/img/cloud-moon.svg';
     } else if (iconCode === '03d' || iconCode === '03n') {
-        return '/assets/img/cloud.svg';
+        return 'assets/img/cloud.svg';
     } else if (iconCode === '04d' || iconCode === '04n') {
-        return '/assets/img/cloud.svg';
+        return 'assets/img/cloud.svg';
     } else if (iconCode === '09d' || iconCode === '09n') {
-        return '/assets/img/rain-alt.svg';
+        return 'assets/img/rain-alt.svg';
     } else if (iconCode === '10d') {
-        return '/assets/img/rain-sun.svg';
+        return 'assets/img/rain-sun.svg';
     } else if (iconCode === '10n') {
-        return '/assets/img/rain-moon.svg';
+        return 'assets/img/rain-moon.svg';
     } else if (iconCode === '11d' || iconCode === '11n') {
-        return '/assets/img/lightning.svg';
+        return 'assets/img/lightning.svg';
     } else if (iconCode === '13d' || iconCode === '13n') {
-        return '/assets/img/snow-alt.svg';
+        return 'assets/img/snow-alt.svg';
     } else if (iconCode === '50d' || iconCode === '50n') {
-        return '/assets/img/fog.svg';
+        return 'assets/img/fog.svg';
     }
 }
 
