@@ -1,0 +1,236 @@
+@media only screen and (min-width: 1800px) {
+    .wrapper {
+        max-width: 1760px;
+        max-height: 1076px;
+        margin: 2vh auto;
+    }
+}
+
+@media only screen and (min-width: 1271px) and (max-width: 1799px) {
+    .wrapper {
+        max-width: 95%;
+        max-height: 1076px;
+        margin: 2vh auto;
+    }
+}
+
+@media only screen and (max-width: 1550px) {
+    h1.section-title {
+        font-size: 2rem;
+    }
+}
+
+@media only screen and (max-width: 1270px) {
+    .header {
+        height: 35vh;
+    }
+
+    .header-search {
+        width: 35%;
+    }
+
+    .header-text {
+        left: 55%;
+    }
+}
+
+
+@media only screen and (min-width: 769px) and (max-width: 1270px) {
+    .wrapper {
+        max-width: 95%;
+        margin: 2vh auto;
+    }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1270px) {
+    .main {
+        flex-wrap: wrap;
+    }
+
+    .section {
+        height: auto;
+    }
+
+    .section-title {
+        margin-top: 10px;
+    }
+
+    .forecast {
+        flex: 1 1 35%;
+        margin-left: 0;
+    }
+
+    .sights {
+        flex: 1 1 59%;
+        margin-right: 0;
+        margin-left: 2vw;
+    }
+
+    .information {
+        order: -1;
+        position: static;
+        width: 100%;
+        flex-direction: row;
+        flex-wrap: wrap;
+        margin: 4vh 0 2vh 0;
+    }
+
+    .information-block_big {
+        flex: 1 1 47%;
+    }
+
+    .information-block_big:first-of-type {
+        margin-right: 2vw;
+    }
+
+    .information-block_small {
+        flex: 1 1 47%;
+        margin-bottom: 0;
+    }
+
+    .information-block_small:last-of-type {
+        margin-left: 2vw;
+    }
+}
+
+@media only screen and (max-width : 992px) {
+    .header-text {
+        padding: 15px 50px;
+    }
+}
+
+@media screen and (min-width: 768px) and (max-width: 900px) {
+    .information-weather__degrees {
+        font-size: 2.5rem;
+    }
+
+    .information-pollution__value p {
+        font-size: 2.5rem;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .wrapper {
+        max-width: 95%;
+        margin: 1vh auto;
+    }
+
+    .header-search {
+        width: 70%;
+    }
+
+    .header-text {
+        top: auto;
+        bottom: 0;
+        left: 50%;
+        margin-left: -100px;
+        padding: 10px 40px;
+        border-radius: 30px 30px 0 0;
+    }
+
+    .header-text__city {
+        font-size: 1.75rem;
+    }
+
+    .header-text__country {
+        font-size: 1rem;
+        line-height: 1.5;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .main {
+        flex-wrap: wrap;
+    }
+
+    .section {
+        margin-bottom: 16px;
+        height: auto;
+    }
+
+    .section-title {
+        margin-top: 10px;
+    }
+
+    .forecast {
+        flex: 1 1 100%;
+        margin-left: 0;
+    }
+
+    .forecast-block {
+        height: 80px;
+    }
+
+    .sights {
+        flex: 1 1 100%;
+        margin-right: 0;
+        margin-left: 0;
+    }
+
+    .information {
+        order: -1;
+        position: static;
+        width: 100%;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        margin: 4vh 0 2vh 0;
+    }
+
+    .information-block_big {
+        flex: 1 1 47%;
+    }
+
+    .information-block_small {
+        flex: 1 1 47%;
+    }
+}
+
+@media only screen and (max-width : 480px) {
+    .sights-blocks {
+        flex-direction: column;
+    }
+
+    .sights-wrapper {
+        width: 100%;
+    }
+
+    .sight2-block {
+        margin-bottom: 0;
+    }
+
+    .sights-block {
+        height: 320px;
+        margin-bottom: 20px;
+    }
+
+    .information-weather__degrees {
+        flex: 1 1 25%;
+        font-size: 2.25rem;
+    }
+
+    .information-weather__degrees p sup {
+        font-size: 1.5rem;
+    }
+
+    .information-weather__place {
+        flex: 1 1 47%;
+    }
+
+    #weather-text,
+    .pollution-text
+    {
+        font-size: 1rem;
+    }
+
+    .information-weather__desc {
+        font-size: 0.85rem;
+    }
+
+    .information-pollution__value p {
+        font-size: 2.25rem;
+    }
+
+    .information-pollution__atm {
+        font-size: 0.85rem;
+    }
+}

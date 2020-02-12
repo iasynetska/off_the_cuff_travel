@@ -38,7 +38,7 @@ function pickIcon(iconCode) {
     } else if (iconCode === '10n') {
         return '/assets/img/rain-moon.svg';
     } else if (iconCode === '11d' || iconCode === '11n') {
-        return '/assets/img/lightning-rain.svg';
+        return '/assets/img/lightning.svg';
     } else if (iconCode === '13d' || iconCode === '13n') {
         return '/assets/img/snow-alt.svg';
     } else if (iconCode === '50d' || iconCode === '50n') {
@@ -67,6 +67,7 @@ function getWindDirection(windDegree) {
 }
 
 function getForecastWeatherThreeDays(weatherData) {
+    console.log(weatherData);
     const weekDays = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 
     const forecastWeatherFirstDay = {

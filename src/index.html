@@ -11,8 +11,7 @@
   <title>off the cuff travel</title>
   <link rel="shortcut icon" href="#" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:700&display=swap&subset=latin-ext" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Quicksand:400,600,700&display=swap" rel="stylesheet">
 </head>
 
 <body>
@@ -35,7 +34,7 @@
     <section class="section forecast">
       <h1 class="section-title">3 Day <span>Forecast</span></h1>
 
-      <!-- ===== 3 day forecast - box 1 ===== -->
+      <!-- ===== 3 day forecast - block 1 ===== -->
       <div class="forecast-block">
         <div class="forecast-block__icon">
           <img id= "icon-day1" src="/assets/img/thermometer.svg" />
@@ -51,7 +50,7 @@
         </div>
       </div>
 
-      <!-- ===== 3 day forecast - box 2 ===== -->
+      <!-- ===== 3 day forecast - block 2 ===== -->
       <div class="forecast-block">
         <div class="forecast-block__icon">
           <img id= "icon-day2" src="/assets/img/thermometer.svg" />
@@ -67,7 +66,7 @@
         </div>
       </div>
 
-      <!-- ===== 3 day forecast - box 3 ===== -->
+      <!-- ===== 3 day forecast - block 3 ===== -->
       <div class="forecast-block">
         <div class="forecast-block__icon">
           <img id= "icon-day3" src="/assets/img/thermometer.svg" />
@@ -108,73 +107,66 @@
       </div>
     </section>
 
-    <!-- ===== Weather-pollution column ===== -->
-    <div class="information weather-pollution-column">
-
-      <!-- ===== Current weather box ===== -->
-      <div class="information-weather bigger-box">
-        <div class="bigger-icon">
-          <div>
-            <img src="/assets/img/thermometer.svg" />
-          </div>
+    <!-- ===== Information column ===== -->
+    <section class="information">
+      <!-- ===== Current weather block ===== -->
+      <div class="information-weather information-block_big">
+        <div class="information-weather__icon">
+          <img src="/assets/img/thermometer.svg" />
         </div>
-        <div class="bigger-box-temp">
+        <div class="information-weather__degrees">
           <p><span id="degrees"></span><sup id="celsius"></sup></p>
         </div>
-        <div class="bigger-box-city">
-          <p ><span id="city-country"></span><br/><span id="country"></span>
-          </p>
+        <div class="information-weather__place">
+          <p><span id="city-name"></span><br/><span id="weather-text"></span></p>
         </div>
-        <div class="bigger-box-lower-row">
-          <p>Humidity: <span id="humidity"></span></p>
-        </div>
-        <div class="bigger-box-lower-row middle">
-          <p id="wind-direction"></p>
-        </div>
-        <div class="bigger-box-lower-row">
+
+        <div class="information-weather__desc">
           <p><span id="wind-speed"></span></p>
         </div>
-      </div>
-
-      <!-- ===== Pollution box ===== -->
-      <div class="information-weather bigger-box">
-        <div class="pollution-value">
-          <div>
-            <p id="air-pollution"></p>
-          </div>
+        <div class="information-weather__desc middle">
+          <p id="wind-direction"></p>
         </div>
-        <div class="bigger-box-pollution">
-          <p><span id="harmfulness"></span><br/>
-            Current Air Quality Index<br/>
-            <sub>Based on US EPA standard</sub></p>
-        </div>
-        <div class="bigger-box-pollution-lower row2 middle">
-          <p>Atmospheric Pressure: <span id="atm-pressure"></span></p>
+        <div class="information-weather__desc">
+          <p><span id="humidity"></span></p>
         </div>
       </div>
 
-      <!-- ===== Currency box ===== -->
-      <div class="information-currency smaller-box">
-        <div class="information-currency__icon smaller-icon">
+      <!-- ===== Pollution block ===== -->
+      <div class="information-pollution information-block_big">
+        <div class="information-pollution__value">
+          <p id="air-pollution"></p>
+        </div>
+        <div class="information-pollution__desc">
+          <div id="harmfulness"></div>
+          <div class="pollution-text">Current Air Quality Index</div>
+          <div class="pollution-standard">Based on US EPA standard</div>
+        </div>
+        <div class="information-pollution__atm">
+          <p><span id="atm-pressure">Atmospheric Pressure</span></p>
+        </div>
+      </div>
+
+      <!-- ===== Currency block ===== -->
+      <div class="information-currency information-block_small">
+        <div class="information-currency__icon information-icon_small">
           <img src="/assets/img/money.svg" />
         </div>
-        <div class="information-currency__data smaller-box-text">
+        <div class="information-currency__data information-data_small">
           <p><span class="currency-name"></span>&nbsp;<span class="currency-code"></span></p>
         </div>
       </div>
 
-      <!-- ===== Flag box ===== -->
-      <div class="information-flag smaller-box">
-        <div class="information-flag__icon smaller-icon">
+      <!-- ===== Flag block ===== -->
+      <div class="information-flag information-block_small">
+        <div class="information-flag__icon information-icon_small">
           <img src="/assets/img/flag.svg" />
         </div>
-        <div class="information-flag__data smaller-box-text">
+        <div class="information-flag__data information-data_small">
         </div>
       </div>
 
-    </div>
-
-
+    </section>
   </div>
 </div>
 

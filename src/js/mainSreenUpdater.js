@@ -1,13 +1,13 @@
 async function updateWeather(weather) {
     const DEGREE = '&#176;';
-    const DEGREE_CELSIUS = '&#8451;';
+    const DEGREE_CELSIUS = 'C';
     const PERCENT = '&#37;';
 
 
-    document.querySelector('.bigger-icon img').src = weather.pathIcon;
-    document.getElementById('degrees').innerHTML = weather.degrees;
+    document.querySelector('.information-weather__icon img').src = weather.pathIcon;
+    document.getElementById('degrees').innerHTML = weather.degrees + '&deg;';
     document.getElementById('celsius').innerHTML = DEGREE_CELSIUS;
-    document.getElementById('humidity').innerHTML = weather.humidity + PERCENT;
+    document.getElementById('humidity').innerHTML ='Humidity: ' + weather.humidity + PERCENT;
     document.getElementById('wind-direction').innerHTML = weather.windDirection;
     document.getElementById('wind-speed').innerHTML = weather.windSpeed + ' km/h';
 
@@ -30,7 +30,7 @@ async function updateWeather(weather) {
 
 async function updateAirPollution(airPollution) {
     document.getElementById('air-pollution').innerHTML = airPollution.airPoll;
-    document.getElementById('atm-pressure').innerHTML = airPollution.atmPress + ' hPa';
+    document.getElementById('atm-pressure').innerHTML = 'Atmospheric Pressure: ' + airPollution.atmPress + ' hPa';
     document.getElementById('harmfulness').innerHTML = airPollution.descAirPoll;
 }
 
@@ -58,8 +58,8 @@ async function updateSights(sights) {
 async function updateCityAndCountry(cityName, countryName) {
     document.querySelector('.header-text__city').innerText = cityName;
     document.querySelector('.header-text__country').innerText = countryName;
-    document.getElementById('city-country').innerText = cityName;
-    document.getElementById('country').innerText = countryName;
+    document.getElementById('city-name').innerText = cityName;
+    document.getElementById('weather-text').innerText = 'Current Weather';
 }
 
 //update currency data
