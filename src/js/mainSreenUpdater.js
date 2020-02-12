@@ -1,15 +1,17 @@
 async function updateWeather(weather) {
     const DEGREE = '&#176;';
     const DEGREE_CELSIUS = 'C';
+    const SLASH = '&#47;';
     const PERCENT = '&#37;';
 
 
     document.querySelector('.information-weather__icon img').src = weather.pathIcon;
     document.getElementById('degrees').innerHTML = weather.degrees + '&deg;';
     document.getElementById('celsius').innerHTML = DEGREE_CELSIUS;
-    document.getElementById('humidity').innerHTML ='Humidity: ' + weather.humidity + PERCENT;
-    document.getElementById('wind-direction').innerHTML = weather.windDirection;
     document.getElementById('wind-speed').innerHTML = weather.windSpeed + ' km/h';
+    document.getElementById('wind-direction').innerHTML = weather.windDirection;
+    document.getElementById('humidity').innerHTML ='Humidity: ' + weather.humidity + PERCENT;
+
 
     document.getElementById('name-day1').innerText = weather.forecastWeatherThreeDays[0].dayName;
     document.getElementById('name-day2').innerText = weather.forecastWeatherThreeDays[1].dayName;
@@ -23,9 +25,9 @@ async function updateWeather(weather) {
     document.getElementById('weather-day2').innerText = weather.forecastWeatherThreeDays[1].weatherDesc.charAt(0).toUpperCase() + weather.forecastWeatherThreeDays[1].weatherDesc.slice(1);
     document.getElementById('weather-day3').innerText = weather.forecastWeatherThreeDays[2].weatherDesc.charAt(0).toUpperCase() + weather.forecastWeatherThreeDays[2].weatherDesc.slice(1);
 
-    document.getElementById('degrees-day1').innerHTML = weather.forecastWeatherThreeDays[0].degrees + DEGREE;
-    document.getElementById('degrees-day2').innerHTML = weather.forecastWeatherThreeDays[1].degrees + DEGREE;
-    document.getElementById('degrees-day3').innerHTML = weather.forecastWeatherThreeDays[2].degrees + DEGREE;
+    document.getElementById('degrees-day1').innerHTML = weather.forecastWeatherThreeDays[0].degreesDay + DEGREE + SLASH + weather.forecastWeatherThreeDays[0].degreesNight + DEGREE;
+    document.getElementById('degrees-day2').innerHTML = weather.forecastWeatherThreeDays[1].degreesDay + DEGREE + SLASH + weather.forecastWeatherThreeDays[1].degreesNight + DEGREE;
+    document.getElementById('degrees-day3').innerHTML = weather.forecastWeatherThreeDays[2].degreesDay + DEGREE + SLASH + weather.forecastWeatherThreeDays[2].degreesNight + DEGREE;
 }
 
 async function updateAirPollution(airPollution) {

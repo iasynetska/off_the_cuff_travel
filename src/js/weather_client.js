@@ -11,9 +11,9 @@ function prepareResponseWeather(weatherData) {
     return {
         pathIcon: pickIcon(weatherData.list[0].weather[0].icon),
         degrees: Math.round(weatherData.list[0].main.temp),
-        humidity: weatherData.list[0].main.humidity,
-        windDirection: getWindDirection(weatherData.list[0].wind.deg),
         windSpeed: Math.round(weatherData.list[0].wind.speed),
+        windDirection: getWindDirection(weatherData.list[0].wind.deg),
+        humidity: weatherData.list[0].main.humidity,
         forecastWeatherThreeDays: getForecastWeatherThreeDays(weatherData)
     };
 }
@@ -67,31 +67,42 @@ function getWindDirection(windDegree) {
 }
 
 function getForecastWeatherThreeDays(weatherData) {
-    console.log(weatherData);
+    return getForecastTime().map((value) => {
+        let forecastNight = weatherData.list.find(el => el.dt === value.nightTime);
+        let forecastDay = weatherData.list.find(el => el.dt === value.dayTime);
+        return  {
+            dayName: value.weekDay,
+            pathIcon: pickIcon(forecastDay.weather[0].icon),
+            degreesNight: Math.round(forecastNight.main.temp),
+            degreesDay: Math.round(forecastDay.main.temp),
+            weatherDesc: forecastDay.weather[0].description
+        };
+    });
+}
+
+function getForecastTime() {
     const weekDays = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+    let forecastDates = [];
 
-    const forecastWeatherFirstDay = {
-        dayName: weekDays[new Date(weatherData.list[8].dt * 1000).getDay()],
-        pathIcon: pickIcon(weatherData.list[8].weather[0].icon),
-        degrees: Math.round(weatherData.list[8].main.temp),
-        weatherDesc: weatherData.list[8].weather[0].description
-    };
+    for (let i = 1; i <= 3; i++) {
+        let oneDay = {};
+        let date = new Date();
 
-    const forecastWeatherSecondDay = {
-        dayName: weekDays[new Date(weatherData.list[16].dt * 1000).getDay()],
-        pathIcon: pickIcon(weatherData.list[16].weather[0].icon),
-        degrees: Math.round(weatherData.list[16].main.temp),
-        weatherDesc: weatherData.list[16].weather[0].description
-    };
+        date.setDate(date.getDate() + i);
+        date.setHours(3);
+        date.setMinutes(0);
+        date.setSeconds(0);
+        date.setMilliseconds(0);
+        oneDay.weekDay = weekDays[date.getDay()];
+        oneDay.nightTime = Date.UTC(date.getFullYear(), date.getMonth(), date.getDate(), date.getHours(), 0, 0, 0) / 1000;
 
-    const forecastWeatherThirdDay = {
-        dayName: weekDays[new Date(weatherData.list[24].dt * 1000).getDay()],
-        pathIcon: pickIcon(weatherData.list[24].weather[0].icon),
-        degrees: Math.round(weatherData.list[24].main.temp),
-        weatherDesc: weatherData.list[24].weather[0].description
-    };
+        date.setHours(15);
+        oneDay.dayTime = Date.UTC(date.getFullYear(), date.getMonth(), date.getDate(), date.getHours(), 0, 0, 0) / 1000;
 
-    return [forecastWeatherFirstDay, forecastWeatherSecondDay, forecastWeatherThirdDay];
+        forecastDates.push(oneDay);
+    }
+
+    return forecastDates;
 }
 
 module.exports.forecastWeather = forecastWeather;
